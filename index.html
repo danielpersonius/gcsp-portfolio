@@ -46,9 +46,8 @@
       $(window).on('resize', function(){
         resizeImage(topImageId)
       });
-    });
 
-    function resizeImage(id) {
+      function resizeImage(id) {
       $("#" + id).css({height: $(window).height()});
       $("#" + id).css({width: $(window).width()});
     }
@@ -72,6 +71,13 @@
         }
       });
     }
+
+    $('.subtitle-link').on('click', function() {
+      $(".jump").each(function(index) {
+        $(this).animate({'opacity':'1'}, 2000);          
+      });
+    });
+
     document.addEventListener("scroll", function() {
       hideshow("section")
       var transition = 2000
@@ -81,6 +87,7 @@
           $(this).animate({'opacity':'1'}, transition);          
         });
       }
+    });
     });
   </script>
 </head>
@@ -212,7 +219,7 @@
     color: white;
   }
 
-  .white-text {
+  .subtitle-link {
     color: #FFFFFF;
   }
 
@@ -265,12 +272,12 @@
     <div id="banner">
       <div class="centered-text">
         <p id="title-text">Daniel Personius GCSP Portfolio</p>
-        <p id="subtitle">
-          <a href="#introduction" class="white-text">Introduction</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="#overview"     class="white-text">Overview</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="#competencies" class="white-text">Competencies</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="#synthesis"    class="white-text">Synthesis</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="#analysis"     class="white-text">Analysis</a>
+        <p class="links" id="subtitle">
+          <a href="#introduction" class="subtitle-link">Introduction</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="#overview"     class="subtitle-link">Overview</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="#competencies" class="subtitle-link">Competencies</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="#synthesis"    class="subtitle-link">Synthesis</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="#analysis"     class="subtitle-link">Analysis</a>
           <br>
         </p>
       </div>
@@ -286,7 +293,7 @@
     </div>
   </div>
   <div class="big-center container">
-    <div class="section" name="introduction">
+    <div class="section" name="introduction" id="introduction">
       <div class="row"  style="padding:13px 15px;">
         <div class="pull-left">
             <img class="section-img" src="introduction.png" alt="introduction">
@@ -298,6 +305,7 @@
             <br> moving to san diego to be a data scientist for viasat
             <br> before i leave i would like to reflect on my time at mines and how the GCSP has shaped it
             <br><br>Engineering is not what I thought it would be
+            <br>Rest is in google doc
             <br>Nulla id condimentum arcu, venenatis accumsan elit. Maecenas id aliquet urna, sed sollicitudin massa. Nunc varius varius ultricies. Morbi dapibus imperdiet eros, et semper quam blandit maximus. Ut ultrices vel sem eget eleifend. Fusce accumsan felis et nibh molestie pellentesque. Mauris libero velit, consectetur nec neque in, ultricies ultricies tellus. Nulla tincidunt, dui sit amet congue pulvinar, velit enim pharetra nulla, quis suscipit leo diam eu ex. Integer erat nunc, accumsan sit amet massa sit amet, pulvinar interdum ante. Fusce tincidunt est ac odio rutrum, in vehicula augue molestie. Aliquam eu feugiat velit. Etiam condimentum risus nec mauris posuere facilisis.
             <br><br>Maecenas ut malesuada ipsum, vitae commodo elit. Duis cursus magna sed nisi blandit, nec luctus erat tempus. Praesent pharetra risus eu luctus tincidunt. Morbi sit amet lacinia dolor. In blandit scelerisque est. Integer diam enim, mollis sit amet lectus ut, viverra luctus diam. Suspendisse fringilla ex ut orci semper dignissim. Fusce a felis sit amet diam cursus cursus et at augue.
           </p>
@@ -321,7 +329,9 @@
       <div class="tab-content">
         <div id="multidisciplinary-overview" class="tab-pane fade in active">
           <br>
-          <p class="body-text">Multidisciplinary Overview
+          <p class="body-text">
+            Multidisciplinary Overview
+            <br>In google doc
             <br>Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus porttitor enim dolor, a euismod justo lacinia vel. Sed at porta felis. Nam convallis justo eu elit aliquam venenatis. Nunc pharetra gravida semper. Curabitur elit felis, interdum vitae fermentum vel, sodales id neque. Suspendisse eu porttitor elit. Vivamus laoreet lacus eu commodo tempus. Sed in tellus eget ante porta lobortis congue in eros. Curabitur ac placerat ex. Integer ultrices vehicula rutrum. Quisque convallis vitae turpis vel ultrices. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
             <br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec ex in libero commodo dictum. Nunc at lacus nec lorem consectetur tincidunt in quis dolor. In tempus leo eu ex vehicula commodo. Proin viverra dignissim massa. Proin sagittis aliquam diam, sed porta nibh volutpat ut. Integer id varius lorem, eget volutpat diam. Nam elementum sem nisl, at accumsan augue vehicula eu. Etiam id tempus ipsum, ut iaculis lectus. Sed dignissim a enim in tincidunt. Curabitur tortor ex, aliquam quis dignissim id, imperdiet sit amet elit. Etiam sed auctor libero, quis iaculis felis. Donec in iaculis purus. Ut congue lobortis augue eu dignissim. Nunc lacinia ac justo ut tristique.
           </p>
@@ -329,7 +339,9 @@
 
         <div id="entrepreneurship-overview" class="tab-pane fade">
           <br>
-          <p class="body-text">Entrepreneurship Overview
+          <p class="body-text">
+            Entrepreneurship Overview
+            <br>In google doc
             <br>Duis rhoncus sollicitudin enim pulvinar vulputate. Aliquam eget ornare lacus. Maecenas et fermentum quam. In at pulvinar quam. Aenean massa ligula, efficitur sit amet eleifend sit amet, feugiat a tortor. Suspendisse accumsan, diam non sollicitudin molestie, lorem nisl mattis risus, eu aliquam diam magna eu dolor. Morbi luctus tellus vitae gravida molestie. Praesent nec tortor eu erat malesuada consequat vel eget dui. Ut pellentesque bibendum dolor a suscipit. Pellentesque ac erat risus. Nullam eu ligula laoreet, congue libero at, consequat felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent et condimentum enim, vitae tristique ligula.
             <br><br>Fusce laoreet commodo consectetur. Mauris eget orci id justo suscipit imperdiet. Integer maximus quam non molestie viverra. Vivamus lobortis ex eget lorem vehicula viverra. Fusce ultricies massa malesuada urna bibendum, et euismod ante volutpat. Aliquam pulvinar, tellus eu dignissim cursus, velit mi pellentesque urna, a elementum turpis orci dapibus velit. Donec sed metus id urna varius blandit. Vivamus blandit metus nunc, vitae auctor orci pharetra vitae. Morbi varius malesuada vehicula. Donec sodales cursus tristique. Nulla accumsan mauris non eros placerat dictum. Aliquam pretium libero vitae nibh varius efficitur. Donec mollis pellentesque faucibus. Vestibulum vel purus a mi mattis viverra.
           </p>
@@ -337,21 +349,27 @@
 
         <div id="social-overview" class="tab-pane fade">
           <br>
-          <p class="body-text">Social Conciousness Overview
+          <p class="body-text">
+            Social Conciousness Overview
+            <br>In google doc
             <br>Nullam convallis quam eget ligula maximus porta. Cras facilisis viverra tortor eget varius. Nulla feugiat ullamcorper est quis posuere. Donec mollis dapibus sagittis. Suspendisse ultricies rutrum turpis et fringilla. In ultrices tempus lectus, id maximus elit molestie vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id tempus nulla, a tempor lorem. Suspendisse blandit aliquam nisi ac varius. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In pellentesque ultricies ipsum, et tincidunt nulla sollicitudin hendrerit. Etiam faucibus scelerisque augue vel suscipit. Nam elementum convallis sapien sodales tempor. Phasellus aliquet dignissim consectetur. Maecenas tincidunt tempor massa eu ultrices. Integer scelerisque, libero et condimentum venenatis, nisl lacus maximus turpis, at facilisis urna urna nec tellus.
             <br><br>Sed varius varius diam, in ultricies massa hendrerit sodales. Donec viverra mauris lectus, et porttitor massa feugiat quis. In tempus leo sem, sed tincidunt diam vestibulum ut. Fusce diam risus, tempor faucibus eros in, finibus hendrerit odio. In leo urna, lobortis ut ipsum sit amet, consequat placerat enim. Cras in nibh a libero vestibulum vulputate ut in mi. Etiam bibendum enim sit amet facilisis laoreet. Vivamus a ipsum mollis nisi tincidunt pellentesque. Phasellus varius, dui vel auctor pellentesque, mauris odio ultricies mauris, id lobortis libero arcu et nunc. Suspendisse commodo leo eget elit viverra ornare. Sed tristique gravida condimentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas maximus eleifend nulla, ac rutrum mi sollicitudin quis. Suspendisse euismod rutrum arcu, nec lacinia nisi tempus a. Fusce elit urna, dictum at mattis non, luctus vel purus.
           </p>
         </div>
         <div id="multicultural-overview" class="tab-pane fade">
           <br>
-          <p class="body-text">Multicultural Overview
+          <p class="body-text">
+            Multicultural Overview
+            <br>In google doc
             <br>Aliquam laoreet mi nec consectetur malesuada. Aenean ut dui at diam aliquam suscipit. Nunc sit amet cursus lectus. Duis molestie faucibus dignissim. Aenean sit amet fringilla metus. Sed sollicitudin, eros sit amet luctus condimentum, tortor massa porttitor lectus, ac pulvinar nulla mi porttitor lorem. Vestibulum scelerisque laoreet posuere. In hac habitasse platea dictumst. Aliquam tincidunt iaculis urna pellentesque lacinia. Phasellus vestibulum eget libero eget viverra. Nam rhoncus nisi eget suscipit fringilla. Donec molestie varius justo sit amet egestas. Vivamus et congue leo. Vivamus eget arcu interdum, dignissim mauris et, rutrum mauris. Aliquam nec suscipit enim. Etiam id dui quam.
             <br><br>Nullam et massa at odio malesuada tincidunt. Donec faucibus tortor in ornare mattis. Etiam auctor risus eu erat scelerisque, in finibus dui laoreet. Sed molestie nec nisi facilisis dignissim. Pellentesque vitae mi at eros fringilla blandit quis eu velit. Etiam consequat tincidunt turpis sollicitudin rhoncus. Curabitur urna elit, molestie nec orci at, cursus volutpat eros. Integer egestas a eros in tempor. Fusce ac nisi accumsan, dictum arcu vitae, ullamcorper diam. In at nibh accumsan, iaculis velit a, vestibulum dui. Nullam mollis lorem non magna laoreet, sit amet egestas risus facilisis. Aliquam fermentum mi mi, et sodales diam porttitor eu. Nulla et maximus ligula. Sed venenatis libero eu semper facilisis.
           </p>
         </div>
         <div id="talent-overview" class="tab-pane fade">
           <br>
-          <p class="body-text">Talent Overview
+          <p class="body-text">
+            Talent Overview
+            <br>In google doc
             <br>Morbi rutrum, sem nec laoreet luctus, leo risus scelerisque enim, in volutpat sapien nisl at velit. Curabitur a cursus leo, commodo fringilla massa. Donec et blandit ante. Quisque porttitor sollicitudin justo, et iaculis nunc egestas id. Pellentesque efficitur quam ex. Donec id felis dolor. Pellentesque et nulla condimentum, iaculis enim nec, finibus lorem. Duis cursus, nisl ac pharetra egestas, dolor lorem rutrum nisl, id malesuada metus mauris sed dolor.
             <br><br>Vivamus velit nibh, tempus vitae sem vulputate, pulvinar lobortis ligula. Curabitur ut ligula ac lectus sagittis ullamcorper. Ut in nisl id lectus suscipit dapibus vel id lectus. Nam vitae felis et nisl tempor pretium. Sed luctus, libero nec tempor convallis, nisi nisi condimentum lectus, ac commodo nunc lectus ut arcu. Donec rhoncus commodo sapien. Morbi tristique, magna id tempor bibendum, lacus eros euismod odio, sit amet molestie diam ligula sed nulla. Etiam luctus vehicula erat at tincidunt. Duis et placerat justo. Donec finibus ornare sem vel convallis. Pellentesque rutrum lacinia risus in lacinia. Vestibulum ut mauris vitae nulla cursus convallis ac nec est. Sed vitae enim posuere, egestas odio sit amet, iaculis dolor. Nam laoreet elit id lacus porttitor, id sodales sapien accumsan.
           </p>
@@ -376,7 +394,9 @@
         <div id="multidisciplinary-competency" class="tab-pane fade in active">
           <br>
           <p class="body-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam lacinia ante, vitae commodo sem interdum sit amet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent a lorem eu ex accumsan varius sed non purus. Sed bibendum a sapien id tempor. Duis a fringilla mi. Praesent vitae felis orci. Suspendisse potenti. Nullam vitae diam sit amet nunc faucibus dictum nec volutpat tellus. Maecenas metus sem, congue eu posuere ut, dignissim a enim. Nulla et nibh quis mi efficitur consequat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            Multidisciplinary Competency
+            <br>In google doc
+            <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam lacinia ante, vitae commodo sem interdum sit amet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent a lorem eu ex accumsan varius sed non purus. Sed bibendum a sapien id tempor. Duis a fringilla mi. Praesent vitae felis orci. Suspendisse potenti. Nullam vitae diam sit amet nunc faucibus dictum nec volutpat tellus. Maecenas metus sem, congue eu posuere ut, dignissim a enim. Nulla et nibh quis mi efficitur consequat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
             <br><br>Integer ornare nisl vitae mattis vestibulum. Ut vel sapien arcu. In condimentum nisl ut interdum semper. Morbi gravida libero at consectetur dictum. Vivamus eu lacus at odio ultrices aliquet. Suspendisse potenti. Donec magna mi, elementum at ante vitae, consectetur imperdiet libero. Curabitur tempor tempus sapien ut consequat. Nullam non nisi convallis, cursus nulla id, egestas orci. Nulla hendrerit sed arcu id consequat. Vestibulum neque tellus, ultrices non scelerisque sed, gravida nec leo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi eu nibh consequat diam efficitur dapibus.
             <br><br>Praesent vehicula urna purus, a gravida turpis venenatis ut. Aliquam dictum iaculis nulla, vulputate porttitor nibh vehicula eget. Proin tincidunt ipsum id nisi vehicula, eget iaculis erat scelerisque. Maecenas diam massa, semper in purus id, pulvinar varius purus. Nunc nec lacus molestie, auctor tellus in, mollis sapien. Donec vulputate dictum diam a hendrerit. Cras vitae magna fermentum, laoreet tortor vel, suscipit felis. Fusce venenatis nec diam eu volutpat. Cras viverra vestibulum consequat. Suspendisse non ex scelerisque, ornare massa ut, gravida diam. Aliquam at tellus eu purus vulputate imperdiet. Quisque odio tortor, pharetra in tincidunt vel, ultricies ut sem. Duis eget vulputate arcu, ut convallis magna. Proin vehicula nibh at nisl vestibulum, et placerat mi aliquet. Proin vitae ex sit amet ante aliquet sollicitudin.
             <br><br>Donec tellus erat, porta ornare mauris et, blandit luctus arcu. Aenean imperdiet massa tellus, vel sollicitudin ipsum finibus vitae. Vivamus maximus tellus sed fermentum ullamcorper. Duis porttitor varius sapien eget ornare. Nulla id metus sit amet tortor malesuada ultrices quis ut augue. Praesent ut consectetur risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fermentum hendrerit tincidunt. Nullam pellentesque sapien et libero maximus dapibus. Curabitur condimentum diam vitae interdum lobortis. Integer nec sagittis justo, eget porttitor massa. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla at quam eu nunc fringilla scelerisque. Vestibulum venenatis, erat non condimentum pretium, diam nulla placerat elit, vel eleifend eros leo id mauris.
@@ -387,7 +407,9 @@
         <div id="entrepreneurship-competency" class="tab-pane fade">
           <br>
           <p class="body-text">
-            Donec porttitor libero ac orci lacinia, sit amet hendrerit tortor eleifend. Suspendisse potenti. Phasellus venenatis ullamcorper pulvinar. Donec non ante at quam fringilla volutpat. Aenean tincidunt, lectus et ultricies tempor, mauris dolor semper enim, sit amet rhoncus nunc lorem laoreet velit. Vivamus eu libero pulvinar, lacinia dui elementum, iaculis nunc. Maecenas vel turpis ex.
+            Entrepreneurship Competency
+            <br>In google doc
+            <br>Donec porttitor libero ac orci lacinia, sit amet hendrerit tortor eleifend. Suspendisse potenti. Phasellus venenatis ullamcorper pulvinar. Donec non ante at quam fringilla volutpat. Aenean tincidunt, lectus et ultricies tempor, mauris dolor semper enim, sit amet rhoncus nunc lorem laoreet velit. Vivamus eu libero pulvinar, lacinia dui elementum, iaculis nunc. Maecenas vel turpis ex.
             <br><br>Donec eros dui, volutpat vitae mollis ullamcorper, dapibus quis dolor. Aenean maximus urna nulla, eget viverra mi efficitur volutpat. Vestibulum enim justo, facilisis eu eros aliquam, vulputate tempus lectus. Curabitur in mattis odio, vitae mattis ligula. Nulla quis iaculis nibh. Duis bibendum, elit consequat porttitor blandit, lectus risus viverra nisl, et eleifend tellus arcu sit amet est. Curabitur feugiat posuere ornare. Sed laoreet nisi nibh, eget aliquam ex vestibulum quis. Phasellus ornare risus eget auctor imperdiet. Aliquam augue neque, lacinia in consectetur nec, tristique vitae ipsum. Quisque quis lectus vel neque aliquet facilisis. Aenean pulvinar posuere eros. Nullam quis viverra nulla, a facilisis turpis.
             <br><br>Etiam condimentum dolor eu elit eleifend pulvinar. Sed felis purus, convallis accumsan posuere ac, congue auctor nunc. Vivamus molestie odio at mauris convallis rhoncus. Fusce molestie orci id lacinia ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque semper sapien eget magna viverra scelerisque. Maecenas feugiat elementum urna et tincidunt. Ut nisl ante, elementum eget pulvinar vitae, consequat sollicitudin lectus. Quisque sed massa nibh. Morbi facilisis magna non mauris lobortis mollis consequat at ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam in tincidunt velit. Etiam vehicula risus ac ligula pellentesque, ut varius nibh posuere. Aenean suscipit massa sit amet metus commodo, eu finibus nibh condimentum. Donec vehicula maximus nibh, eget iaculis metus porttitor sit amet. Vivamus at tortor ex.
             <br><br>Etiam scelerisque nibh et suscipit molestie. Donec vitae ante sed odio ullamcorper tristique. Sed sit amet velit sit amet dolor faucibus porttitor non vitae neque. Donec tincidunt facilisis nibh id sagittis. Nam in risus vitae metus ornare imperdiet id eu magna. Sed tincidunt massa leo, in sagittis lacus gravida sed. Integer tincidunt iaculis volutpat. Integer convallis, nulla a eleifend dictum, lacus arcu ultricies neque, non ultrices risus enim nec mauris. Sed rutrum mattis ornare. Sed dictum risus quis nisl dignissim lacinia. Nullam faucibus eros et nisi sagittis, quis maximus ex mattis. Proin eu dolor eget lectus efficitur consectetur non nec mi.
@@ -398,7 +420,9 @@
         <div id="social-competency" class="tab-pane fade">
           <br>
           <p class="body-text">
-            Vestibulum sapien nisi, elementum a hendrerit ac, malesuada quis quam. Pellentesque fringilla maximus augue, vitae placerat dolor porttitor eu. Donec at ante id tortor egestas tristique. Nam vitae lacus metus. Proin bibendum gravida malesuada. Morbi sed vulputate dui. Integer vulputate justo non sapien pharetra, vitae facilisis leo molestie. Vivamus tincidunt orci dui, a efficitur felis lobortis sit amet.
+            Social Competency
+            <br>In google doc
+            <br>Vestibulum sapien nisi, elementum a hendrerit ac, malesuada quis quam. Pellentesque fringilla maximus augue, vitae placerat dolor porttitor eu. Donec at ante id tortor egestas tristique. Nam vitae lacus metus. Proin bibendum gravida malesuada. Morbi sed vulputate dui. Integer vulputate justo non sapien pharetra, vitae facilisis leo molestie. Vivamus tincidunt orci dui, a efficitur felis lobortis sit amet.
             <br><br>Donec eget ante ut justo finibus placerat id non tellus. Donec imperdiet non metus eget mattis. Curabitur sed facilisis sem, id porta ante. Cras rutrum eget sapien sit amet bibendum. Donec eget est congue, fermentum elit quis, interdum augue. Sed placerat, dolor sed ornare consequat, purus leo faucibus urna, sed scelerisque nisi mauris nec dolor. Ut suscipit aliquet tortor ut pretium. Aliquam sit amet scelerisque quam. Fusce massa ipsum, pharetra pulvinar tempus a, molestie id nisi. Maecenas euismod justo ex, at auctor neque rutrum quis. Proin vestibulum auctor urna, sed pellentesque augue consequat sed. Ut iaculis volutpat pellentesque. Duis vitae arcu sit amet lorem mattis imperdiet a placerat justo. Quisque id massa porta risus interdum mattis.
             <br><br>Quisque fermentum ipsum eu orci molestie, nec ornare quam sodales. Suspendisse vestibulum consequat nisi, consequat facilisis metus consequat at. Nulla ut fringilla diam. Vivamus non velit ipsum. Nam congue lacus nec tellus consectetur, ac venenatis eros ultricies. Donec at erat in odio blandit dignissim vitae et enim. Duis semper non turpis vel molestie. Phasellus odio dui, fermentum in mi quis, condimentum pretium nisl. Vivamus facilisis non sapien sit amet sagittis. In pulvinar finibus urna, id posuere turpis commodo et. Proin at sapien libero. Vestibulum in eros sem. Phasellus interdum suscipit sagittis. Duis erat nulla, finibus nec consectetur in, aliquam ac mi.
             <br><br>Vivamus placerat mollis libero, vel hendrerit metus sodales in. Vivamus quis sodales purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam dapibus malesuada arcu. Vestibulum mattis tortor gravida velit varius, eget consectetur metus facilisis. Ut eget venenatis magna, eu vulputate orci. Pellentesque gravida sem enim.
@@ -408,7 +432,9 @@
         <div id="multicultural-competency" class="tab-pane fade">
           <br>
           <p class="body-text">
-            Aliquam nec sem vitae ipsum tempor elementum quis sit amet massa. Fusce lacinia nulla sit amet massa varius convallis. Etiam fermentum quam et efficitur scelerisque. Phasellus arcu tortor, porttitor rhoncus condimentum in, hendrerit nec ex. Aliquam dictum, felis at finibus fermentum, tortor massa molestie sapien, at placerat neque odio non tortor. Curabitur consectetur dictum tempor. Sed auctor tincidunt dui a porta. Maecenas id vulputate sapien. Maecenas hendrerit elit sed nisi malesuada semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse suscipit turpis eget ante blandit finibus. Suspendisse condimentum fermentum odio nec feugiat. Etiam luctus auctor enim non euismod. Sed lacinia nisl ac est aliquet, nec tincidunt dolor laoreet. Quisque pellentesque, arcu non tincidunt viverra, justo arcu cursus magna, sed volutpat elit enim vitae lorem. Mauris nec mi leo.
+            Multicultural Competency
+            <br>In google doc
+            <br>Aliquam nec sem vitae ipsum tempor elementum quis sit amet massa. Fusce lacinia nulla sit amet massa varius convallis. Etiam fermentum quam et efficitur scelerisque. Phasellus arcu tortor, porttitor rhoncus condimentum in, hendrerit nec ex. Aliquam dictum, felis at finibus fermentum, tortor massa molestie sapien, at placerat neque odio non tortor. Curabitur consectetur dictum tempor. Sed auctor tincidunt dui a porta. Maecenas id vulputate sapien. Maecenas hendrerit elit sed nisi malesuada semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse suscipit turpis eget ante blandit finibus. Suspendisse condimentum fermentum odio nec feugiat. Etiam luctus auctor enim non euismod. Sed lacinia nisl ac est aliquet, nec tincidunt dolor laoreet. Quisque pellentesque, arcu non tincidunt viverra, justo arcu cursus magna, sed volutpat elit enim vitae lorem. Mauris nec mi leo.
             <br><br>Suspendisse potenti. Cras congue dolor nisl, ut ullamcorper metus porta sit amet. In ac arcu ipsum. Donec vitae bibendum odio. Vestibulum tempus molestie convallis. Proin ut velit sapien. Aenean ut eleifend orci.
             <br><br>Vestibulum vitae libero semper, maximus metus ut, laoreet sem. Phasellus lobortis enim sit amet orci volutpat feugiat a pretium elit. Sed nec interdum velit. Suspendisse nisl velit, commodo a bibendum sed, iaculis eu nunc. Cras nunc nunc, pharetra lacinia orci in, eleifend ullamcorper ex. Curabitur euismod dolor eu ligula elementum aliquam. Maecenas varius augue in lorem fringilla tristique. Duis feugiat aliquam ligula a aliquam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent id quam mauris. Nullam pellentesque vestibulum lacus quis finibus. Maecenas venenatis in lacus eleifend auctor. Integer viverra a ex vitae sodales. Sed condimentum elit sollicitudin, vulputate mauris volutpat, varius felis. Quisque tempus ornare metus malesuada laoreet.
             <br><br>Quisque quis tellus nunc. Aliquam consectetur tempus tempor. Proin egestas at dolor vel mattis. Fusce eget finibus nisl. Nunc a metus ut sem vulputate ultrices. Pellentesque eget quam quis dui suscipit porttitor. Nullam semper, ante ut condimentum finibus, orci quam rutrum purus, in laoreet lorem odio ut erat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris ac mauris leo. Morbi quis odio vehicula, ultrices est non, feugiat urna.
@@ -418,7 +444,9 @@
         <div id="talent-competency" class="tab-pane fade">
           <br>
           <p class="body-text">
-            Praesent quis tellus elementum tellus pharetra aliquam sit amet vel dui. Vestibulum ac enim urna. Ut mattis commodo feugiat. Aenean varius mauris eu risus mollis, a feugiat metus ullamcorper. Ut lorem nisl, vehicula nec efficitur vitae, tincidunt quis mauris. Nulla placerat, ligula sed faucibus sodales, libero massa sollicitudin massa, ac rhoncus velit massa vitae tortor. Proin vitae pulvinar nibh, quis vestibulum felis. Quisque scelerisque ullamcorper pharetra. Nunc interdum magna massa. Sed mattis convallis felis, a egestas risus fermentum nec. Proin tristique felis nec justo consectetur lobortis. Vivamus eleifend dui commodo faucibus mattis. Nam risus dui, condimentum vitae augue eget, aliquet posuere orci. Nulla condimentum nunc eu ornare sagittis. In massa leo, eleifend ac diam sit amet, finibus lacinia arcu.
+            Talent Competency
+            <br>In google doc
+            <br>Praesent quis tellus elementum tellus pharetra aliquam sit amet vel dui. Vestibulum ac enim urna. Ut mattis commodo feugiat. Aenean varius mauris eu risus mollis, a feugiat metus ullamcorper. Ut lorem nisl, vehicula nec efficitur vitae, tincidunt quis mauris. Nulla placerat, ligula sed faucibus sodales, libero massa sollicitudin massa, ac rhoncus velit massa vitae tortor. Proin vitae pulvinar nibh, quis vestibulum felis. Quisque scelerisque ullamcorper pharetra. Nunc interdum magna massa. Sed mattis convallis felis, a egestas risus fermentum nec. Proin tristique felis nec justo consectetur lobortis. Vivamus eleifend dui commodo faucibus mattis. Nam risus dui, condimentum vitae augue eget, aliquet posuere orci. Nulla condimentum nunc eu ornare sagittis. In massa leo, eleifend ac diam sit amet, finibus lacinia arcu.
             <br><br>Aliquam dui nunc, semper nec maximus vel, consectetur eu lorem. Nullam ex felis, facilisis non dignissim vitae, tempus ac nibh. Nullam eget egestas velit. Donec luctus luctus leo vel bibendum. Vivamus interdum nisl ac quam maximus, non egestas lacus ullamcorper. Proin quis leo vulputate, sollicitudin dolor vel, consectetur orci. Nam nec aliquet enim. Duis sollicitudin cursus ligula, venenatis tincidunt orci dictum ac. Aenean varius ex id nulla congue, vitae aliquam lectus mollis. Fusce vel euismod nisi, non malesuada nunc. Ut pretium blandit lorem ac faucibus. Pellentesque tincidunt mi ac risus vulputate viverra. In eu lobortis turpis, non tempus felis. Cras porta tempus ante.
             <br><br>Duis sodales dignissim ante. Sed nec dui tincidunt, lacinia dui eu, sodales turpis. Nullam ornare nisi sit amet odio sagittis cursus. Fusce imperdiet lorem nec orci scelerisque, ullamcorper varius quam condimentum. Ut iaculis dui eros, vitae vehicula metus suscipit ac. Proin venenatis lobortis ante id molestie. Curabitur lobortis lacus quis risus sagittis, eget tempus tortor ultrices. Cras purus nulla, consectetur sit amet porttitor vel, accumsan elementum diam. In euismod neque at erat ultrices auctor. In blandit massa ipsum, tincidunt scelerisque diam rhoncus a. In sed consequat justo, eu pharetra dolor.
             <br><br>Phasellus et congue leo. Etiam quis magna vel nisl ultrices iaculis vel eu mauris. Nulla facilisi. Donec consequat, velit nec hendrerit hendrerit, odio sapien congue metus, sed pharetra risus est sit amet sapien. Duis feugiat eleifend faucibus. Maecenas feugiat ultricies posuere. Donec cursus aliquet volutpat. Fusce tincidunt tellus quis lectus consectetur lobortis. Ut ac consectetur leo. Duis luctus, massa id ornare bibendum, sapien lorem consequat augue, at dapibus orci tortor sed felis. Donec pretium ex vel purus consectetur, pulvinar ullamcorper massa tempor. Nunc a eros vel ante imperdiet mattis. Sed dolor ligula, finibus ac fermentum vitae, tincidunt vel orci. Donec commodo tellus mauris, vitae ullamcorper nunc placerat quis.
@@ -430,14 +458,15 @@
     <!-- end competencies -->
     <!-- synthesis -->
     <br><br><br><br><br>
-    <div class="section" name="synthesis">
+    <div class="section" name="synthesis" id="synthesis">
       <div class="row"  style="padding:13px 15px;">
         <div class="pull-left">
             <img class="section-img" src="synthesis.png" alt="synthesis">
         </div>
         <div class="col-xs-8">
           <p class="body-text">
-            engineering is not what i thought it was
+            engineering is not what i thought it would be. It's better
+            <br>In google doc
             <br>Sed efficitur ipsum quis quam scelerisque, bibendum sagittis erat ultrices. Proin luctus suscipit turpis eu molestie. Aenean vehicula diam libero. Maecenas porttitor porttitor nulla, in dictum nisi mattis vitae. Nam bibendum tincidunt lacus ut dapibus. Integer aliquet lorem sed massa tincidunt, sed imperdiet erat auctor. Mauris sollicitudin, sem quis venenatis pulvinar, quam est accumsan sem, ut efficitur odio tellus a velit. Donec rutrum lorem massa, sit amet condimentum est scelerisque a. Vestibulum semper quam vulputate, sodales sapien eget, ultrices est.
             <br><br>Sed nec mauris felis. Quisque vitae scelerisque erat, at bibendum turpis. Phasellus fringilla quam ac magna interdum sollicitudin. Maecenas interdum ex at malesuada pellentesque. Ut in ullamcorper quam. Donec id sem viverra, hendrerit est luctus, maximus ex. Suspendisse eget justo sed enim vulputate dapibus in vehicula mauris.
             <br><br>Ut sit amet dolor gravida, eleifend urna sed, porta risus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean sit amet nibh nec lorem dictum luctus in eu mauris. Duis blandit in lacus at dignissim. Aenean condimentum ipsum ut condimentum condimentum. Nulla lobortis ex nec orci pharetra, in convallis justo ultricies. Cras sagittis, ex ut fermentum porttitor, nisi enim ullamcorper libero, eget fringilla diam enim quis elit. Maecenas turpis augue, malesuada venenatis quam sed, lacinia porttitor sapien. Vestibulum id elit non sem porta dignissim at et eros. Cras laoreet nisi in felis ultricies, vitae dictum massa fermentum.
@@ -457,6 +486,7 @@
         </div>
         <div class="col-xs-8">
           <p class="body-text">Do not consider equitable outcomes
+            <br>In google doc
             <br>Sed ut magna elementum, iaculis sapien a, auctor dui. Phasellus tempus ultricies fermentum. Phasellus ultricies ligula a convallis euismod. Nulla lobortis, nisl non finibus congue, ligula turpis lacinia dui, at ultricies turpis massa sit amet ex. Phasellus gravida in ligula ut feugiat. Sed ut egestas libero, sed dictum ligula. Praesent luctus porttitor risus sit amet sollicitudin. Pellentesque pretium blandit lectus at ornare. In id tellus tristique arcu interdum viverra. Morbi metus urna, maximus vitae purus in, interdum mollis orci. Cras ipsum nisl, porttitor vel mi quis, iaculis sagittis diam.
             <br><br>In hac habitasse platea dictumst. Aenean non iaculis ex, ac malesuada nisi. Donec sagittis in tellus eget luctus. Sed sodales tincidunt purus, sit amet lacinia nisl tristique et. Integer in dignissim elit. Donec vestibulum suscipit nisi et euismod. In ac lacinia ligula. Donec facilisis urna nunc, ac vulputate diam venenatis vel. Suspendisse condimentum malesuada odio sed auctor. Donec non elementum nulla.
             <br><br>Mauris lacinia nisl eu purus cursus vestibulum. Aliquam erat volutpat. Sed eget odio nec dui tempus congue. Suspendisse id mauris tincidunt, ultricies purus sit amet, laoreet nulla. Suspendisse id mi ut nisi ullamcorper fringilla. Aenean cursus mauris id lorem tincidunt placerat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eu tellus sodales, commodo nisl et, cursus ligula. Donec maximus ex sed mauris eleifend, eget feugiat lorem faucibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. In finibus consectetur purus, a ornare dolor pretium nec. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi molestie massa suscipit ultrices mollis. Maecenas congue, arcu nec dignissim tincidunt, diam libero commodo elit, in consequat nunc ex a libero.
