@@ -18,7 +18,7 @@
     $( document ).ready(function() {
       // THIS IS FKN GARBAGE BUT I TRIED FOR HOURS AND NOTHING FKN WORKED. EVERY SO ANSWER FAILED
       // EVERY PIECE OF DOC FAILED
-      var overviewLiIds = ['#multidisciplinary-overview-li', '#entrepreneurship-overview-li', '#social-overview-li', '#multicultural-overview-li', '#talent-overview-li'];
+      var overviewLiIds = ['#egc-overview-li', '#multidisciplinary-overview-li', '#entrepreneurship-overview-li', '#social-overview-li', '#multicultural-overview-li', '#talent-overview-li'];
       var competencyLiIds = ['#multidisciplinary-competency-li', '#entrepreneurship-competency-li', '#social-competency-li', '#multicultural-competency-li', '#talent-competency-li'];
       // 
       $('li').on('click', function() {
@@ -326,13 +326,23 @@
       <center><img class="section-horizontal-img" src="overview.png" alt="overview"></center>
       <br>
       <ul class="nav nav-pills nav-justified" id="overview-pills">
-        <li id="multidisciplinary-overview-li" class="active"><a data-toggle="tab" href="#multidisciplinary-overview"><p class="selected-tab-text">Multidisciplinary</p></a></li>
+        <li id="egc-overview-li" class="active"><a data-toggle="tab" href="#egc-overview"><p class="selected-tab-text">The EGCs</p></a></li>
+        <li id="multidisciplinary-overview-li" class="nav-tab"><a data-toggle="tab" href="#multidisciplinary-overview"><p class="tab-text">Multidisciplinary</p></a></li>
         <li id="entrepreneurship-overview-li" class="nav-tab"><a data-toggle="tab" href="#entrepreneurship-overview"><p class="tab-text">Entrepreneurship</p></a></li>
         <li id="social-overview-li" class="nav-tab"><a data-toggle="tab" href="#social-overview"><p class="tab-text">Social Conciousness</p></a></li>
         <li id="multicultural-overview-li" class="nav-tab"><a data-toggle="tab" href="#multicultural-overview"><p class="tab-text">Multicultural</p></a></li>
         <li id="talent-overview-li" class="nav-tab"><a data-toggle="tab" href="#talent-overview"><p class="tab-text">Talent</p></a></li>
       </ul>
       <div class="tab-content">
+        <div id="egc-overview" class="tab-pane fade in active">
+          <br>
+          <p class="body-text">
+            Overview of the Engineering Grand Challenges
+            <br>In case any readers are unaware
+            <br>Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus porttitor enim dolor, a euismod justo lacinia vel. Sed at porta felis. Nam convallis justo eu elit aliquam venenatis. Nunc pharetra gravida semper. Curabitur elit felis, interdum vitae fermentum vel, sodales id neque. Suspendisse eu porttitor elit. Vivamus laoreet lacus eu commodo tempus. Sed in tellus eget ante porta lobortis congue in eros. Curabitur ac placerat ex. Integer ultrices vehicula rutrum. Quisque convallis vitae turpis vel ultrices. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+            <br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec ex in libero commodo dictum. Nunc at lacus nec lorem consectetur tincidunt in quis dolor. In tempus leo eu ex vehicula commodo. Proin viverra dignissim massa. Proin sagittis aliquam diam, sed porta nibh volutpat ut. Integer id varius lorem, eget volutpat diam. Nam elementum sem nisl, at accumsan augue vehicula eu. Etiam id tempus ipsum, ut iaculis lectus. Sed dignissim a enim in tincidunt. Curabitur tortor ex, aliquam quis dignissim id, imperdiet sit amet elit. Etiam sed auctor libero, quis iaculis felis. Donec in iaculis purus. Ut congue lobortis augue eu dignissim. Nunc lacinia ac justo ut tristique.
+          </p>
+        </div>
         <div id="multidisciplinary-overview" class="tab-pane fade in active">
           <br>
           <p class="body-text">
