@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>GCSP Portfolio</title>
+  <title>Daniel Personius - GCSP Portfolio</title>
   <meta charset="utf-8">
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon//apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon//favicon-32x32.png">
@@ -13,87 +13,121 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Monoton|Montserrat|Open+Sans|Playfair+Display|Roboto+Mono|Roboto+Slab&display=swap" rel="stylesheet">
 
   <script type="text/javascript">
     $( document ).ready(function() {
+      $('.carousel').carousel({
+        interval: 0
+      })
+      // $('.carousel').carousel('pause');
+
+       // resize image
+      var topImageId = "top-img";
+      resizeImage(topImageId)
+      $("#" + topImageId).show();
+
+      $('li').on('click', function() {
+        changeTabColors(this);
+      });
+
+      // change the active tab when a link in the subtitle is pressed
+      $(".subtitle-button").on('click', function() {
+        // move to tab
+        $('html, body').animate(
+          {
+            scrollTop: $('#content').offset().top
+          },
+          1200,
+          'linear'
+        )
+        // get tab basename
+        tab = this.id.split("-")[0]
+        // actually click the tab so that each is properly updated as
+        // either active or not so that changeTabColors can work
+        $('#content-pills a[href="#' + tab + '-tab"]').click();
+      });
+
       // THIS IS FKN GARBAGE BUT I TRIED FOR HOURS AND NOTHING FKN WORKED. EVERY SO ANSWER FAILED
       // EVERY PIECE OF DOC FAILED
+      var mainLiIds = ['#introduction-tab-li', '#pillars-tab-li', '#reflection-tab-li', '#synthesis-tab-li', '#analysis-tab-li']
       var overviewLiIds = ['#egc-overview-li', '#multidisciplinary-overview-li', '#entrepreneurship-overview-li', '#social-overview-li', '#multicultural-overview-li', '#talent-overview-li'];
-      var competencyLiIds = ['#multidisciplinary-competency-li', '#entrepreneurship-competency-li', '#social-competency-li', '#multicultural-competency-li', '#talent-competency-li'];
-      // 
-      $('li').on('click', function() {
-        if ($(this).parent().is("#overview-pills")) {
+      var reflectionLiIds = ['#multidisciplinary-reflection-li', '#entrepreneurship-reflection-li', '#social-reflection-li', '#multicultural-reflection-li', '#talent-reflection-li'];
+      
+      function changeTabColors(element) {
+        if ($(element).parent().is("#content-pills")) {
+          mainLiIds.forEach(function(li) {
+            $(li).children().find('p').css({color: "#487A7F"});
+          });
+        }
+
+        else if ($(element).parent().is("#overview-pills")) {
           overviewLiIds.forEach(function(li) {
             $(li).children().find('p').css({color: "#487A7F"});
           });
         }
         else {
-          competencyLiIds.forEach(function(li) {
+          reflectionLiIds.forEach(function(li) {
             $(li).children().find('p').css({color: "#487A7F"});
           });
         }
-        $(this).children().find('p').css({color: "#FFFFFF"});
+        $(element).children().find('p').css({color: "#FFFFFF"});
+      }
+
+      function resizeImage(id) {
+        $("#" + id).css({height: $(window).height()});
+        $("#" + id).css({width: $(window).width()});
+      }
+
+      function hideshow(classname) {
+        $('.' + classname).each(function(index) {
+          var offset = $(this).offset()
+          var top_of_object = offset.top
+          var bottom_of_object = top_of_object + $(this).outerHeight();
+          var top_of_window = $(window).scrollTop()
+          var bottom_of_window = top_of_window + $(window).height();
+          var show_buffer = 10
+          var hide_buffer = 150
+          var transition = 2000
+
+          var opacity = $(this).css("opacity")
+          if(opacity == 0) {
+            if (bottom_of_window > top_of_object + show_buffer) {
+              $(this).animate({'opacity':'1'}, transition);
+            }
+          }
+        });
+      }
+
+      document.addEventListener("scroll", function() {
+        hideshow("section")
+        // var transition = 2000
+        // var jump_opacity = $('.jump').css("opacity")
+        // if (jump_opacity == 0 && $('#introduction').css("opacity") != 0) {
+        //   $(".jump").each(function(index) {
+        //     $(this).animate({'opacity':'1'}, transition);          
+        //   });
+        // }
       });
 
-      // resize image
-      var topImageId = "top-img";
-      resizeImage(topImageId)
-      $("#" + topImageId).show();
+      // hacky way of waiting for animations to end
 
-      // hacky way of waiting
       setTimeout(function(){
         setTimeout(function(){
-          $(".bottom-centered-text").animate({opacity: 1}, 4000);
+          setTimeout(function() {
+            $(".footer-img").animate({opacity: 1}, 1000);
+          }, 1500);
+          $(".bottom-centered-text").animate({opacity: 1}, 1000);
         }, 1500);
-        $("#subtitle").animate({opacity: 1}, 5000);        
+        $("#subtitle").animate({opacity: 1}, 1000);
       }, 1500);
-      $("#title-text").animate({opacity: 1}, 4000);
+      $("#title-text").animate({opacity: 1}, 2000);
 
       $(window).on('resize', function(){
         resizeImage(topImageId)
       });
-
-      function resizeImage(id) {
-      $("#" + id).css({height: $(window).height()});
-      $("#" + id).css({width: $(window).width()});
-    }
-
-    function hideshow(classname) {
-      $('.' + classname).each(function(index) {
-        var offset = $(this).offset()
-        var top_of_object = offset.top
-        var bottom_of_object = top_of_object + $(this).outerHeight();
-        var top_of_window = $(window).scrollTop()
-        var bottom_of_window = top_of_window + $(window).height();
-        var show_buffer = 10
-        var hide_buffer = 150
-        var transition = 2000
-
-        var opacity = $(this).css("opacity")
-        if(opacity == 0) {
-          if (bottom_of_window > top_of_object + show_buffer) {
-            $(this).animate({'opacity':'1'}, transition);
-          }
-        }
-      });
-    }
-
-    $('.subtitle-link').on('click', function() {
-      $(".jump").each(function(index) {
-        $(this).animate({'opacity':'1'}, 2000);          
-      });
-    });
-
-    document.addEventListener("scroll", function() {
-      hideshow("section")
-      var transition = 2000
-      var jump_opacity = $('.jump').css("opacity")
-      if (jump_opacity == 0 && $('#introduction').css("opacity") != 0) {
-        $(".jump").each(function(index) {
-          $(this).animate({'opacity':'1'}, transition);          
-        });
-      }
-    });
     });
   </script>
 </head>
@@ -124,6 +158,10 @@
     transform: translate(-50%, -50%);
   }
 
+  .avatar {
+    border-radius: 50%;
+  }
+
   .bottom-centered-text {
     position: absolute;
     top: 90%;
@@ -133,8 +171,14 @@
   }
 
   #title-text {
-    font-size: 3vw;
+    font-size: 3vmax;
     opacity: 0;
+    /*font-family: 'Roboto Slab', serif;*/
+    /*font-family: 'Roboto Mono', monospace;*/
+    /*font-family: 'Montserrat', sans-serif;*/
+    /*font-family: 'Monoton', cursive;*/
+    font-family: 'Playfair Display', serif;
+    /*font-family: 'Open Sans', sans-serif;*/
   }
 
   #banner {
@@ -144,6 +188,12 @@
   #subtitle {
     font-size: 1vw;
     opacity: 0;
+    /*font-family: 'Roboto Slab', serif;*/
+    /*font-family: 'Roboto Mono', monospace;*/
+    /*font-family: 'Montserrat', sans-serif;*/
+    /*font-family: 'Monoton', cursive;*/
+    font-family: 'Playfair Display', serif;
+    /*font-family: 'Open Sans', sans-serif;*/
   }
 
   .full-width {
@@ -157,7 +207,19 @@
 
   .navbar-width {
     margin: auto;
-    width: 80%;
+    width: 95% auto;
+    padding: 10px;
+  }
+
+  .top-navbar-width {
+    margin: auto;
+    width: 95% auto;
+    padding: 10px;
+  }
+
+  .tab-content {
+    margin: auto;
+    width: 85%;
     padding: 10px;
   }
 
@@ -169,42 +231,16 @@
 
   .big-center {
     margin: auto;
-    width: 90%;
+    width: 100%;
     padding: 10px;
-  }
-
-  .jump {
-    opacity: 0;
-  }
-
-  #jump-top {
-    position: fixed;
-    top: 97%;
-    left: 97%;
-    font-size: 20px;
-  }
-
-  #jump-bottom {
-    position: fixed;
-    top: 97%;
-    left: 1%;
-    font-size: 20px;
-  }
-
-  .section {
-    opacity: 0;
   }
 
   .link-img {
     width: 5%;
   }
 
-  .section-img {
-    width: 70%;
-  }
-
-  .section-horizontal-img {
-    width: 45%;
+  .footer-img {
+    opacity: 0;
   }
 
   #top-img {
@@ -212,25 +248,100 @@
   }
 
   .body-text {
-    font-size: 20px;
+    font-size: 23px;
+    /*font-size: 1.5vw;    */
   }
 
   .tab-text {
-    font-size: 25px;
+    font-size: 1.5vw;
     color: #487A7F;
   }
 
   .selected-tab-text {
-    font-size: 25px;
+    font-size: 1.5vw;    
     color: white;
   }
 
+  .top-pill-text {
+    font-size: 2vw;
+  }
+
+  .pill-text {
+    color: #487A7F;
+    font-size: 1.5vw;
+  }
+
   .subtitle-link {
-    color: #FFFFFF;
+    color: white;
+  }
+
+  a:link {
+    color: white;
+  }
+
+  a:hover {
+    color: white;
+  }
+
+  a:active {
+    color: white;
+  }
+
+  a:visited {
+    color: white;
+  }
+
+  button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
   }
 
   .green-text {
     color: #487A7F;
+  }
+
+  .caption-title {
+    font-size: 2.3vw;
+    /*font-size: 30px;*/
+  }
+
+  .caption-text {
+    /*font-size: 15px;*/
+    font-size: 0.8vw;
+  }
+
+  .centered-img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+  .carousel-inner>.item>img, .carousel-inner>.item>a>img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+    line-height: 1;
+    width: 100%; 
+  }
+
+  .carousel-caption-light-image {
+    background: rgba(0, 0, 0, 0.55);
+  }
+
+  .carousel {
+    /*width: 1200px;*/
+    /*width: auto;*/
+    width: 75%;
+    margin: 0 auto;
+  }
+
+  .nav-pills {
+    font-family: 'Playfair Display', serif;    
   }
 
   .nav-pills > li.active > a, 
@@ -240,50 +351,34 @@
     background-color:#487A7F;
   }
 
-  /*.nav-pills > li > a,
-  .nav-pills > li > a.hover,
-  .nav-pills > li > a.focus {
-    color: #487A7F;
-
-  }*/
-
-  /*.nav-pills > li.active > a {
-    color: white !important;;
-    font-size: 16px;
+  .dot {
+    height: 6px;
+    width: 6px;
+    /*background-color: #bbb;*/
+    background-color: #919191;
+    /*background-color: #000000;*/
+    border-radius: 50%;
+    display: inline-block;
   }
-  .nav-pills > li > a {
-    color: #487A7F !important;;
-  }*/
-
-  .nav-pills > .active > a, .nav-pills > .active > a:hover {
-      background-color: red;
-  }
-
-  /*.nav-pills > li.active > a, .nav-pills > li.active > a:focus {
-    color: black;
-    background-color: #487A7F;
-  }
-
-  .nav-pills > li.active > a:hover {
-      background-color: #487A7F;
-      color:black;
-  }*/
-
 </style>
 <body>
-  <div class="jump" id="jump-top"><a href="#top" style="color: #487A7F">Top&nbsp;&uarr;</a></div>
-  <div class="jump" id="jump-bottom"><a href="#footer" style="color: #487A7F">End&nbsp;&darr;</a></div>
+  <!-- <div class="jump" id="jump-top"><a href="#top" style="color: #487A7F">Top&nbsp;&uarr;</a></div> -->
+  <!-- <div class="jump" id="jump-bottom"><a href="#footer" style="color: #487A7F">End&nbsp;&darr;</a></div> -->
   <div class="full-width img-container" id="top">
     <img id="top-img" src="clouds2.jpg" alt="clouds" style="width:100%;">
     <div id="banner">
       <div class="centered-text">
         <p id="title-text">Daniel Personius GCSP Portfolio</p>
         <p class="links" id="subtitle">
-          <a href="#introduction" class="subtitle-link">Introduction</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="#overview"     class="subtitle-link">Overview</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="#competencies" class="subtitle-link">Competencies</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="#synthesis"    class="subtitle-link">Synthesis</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="#analysis"     class="subtitle-link">Analysis</a>
+          <button class="subtitle-button" id="introduction-link">Introduction</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button class="subtitle-button" id="pillars-link">Pillars</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button class="subtitle-button" id="reflection-link">Reflections</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button class="subtitle-button" id="synthesis-link">Synthesis</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button class="subtitle-button" id="analysis-link">Analysis</button>
           <br>
         </p>
       </div>
@@ -291,7 +386,7 @@
         <p>
           <a href="https://www.linkedin.com/in/daniel-personius/" target="_blank"><img class="link-img" src="linkedin2.png"></a>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="https://github.com/danielpersonius" target="_blank"><img class="link-img" src="github.png"></a>
+          <a href="https://github.com/danielpersonius" target="_blank"><img class="link-img" src="github-white.png"></a>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a href="mailto: personiusdaniel@gmail.com" target="_blank"><img class="link-img" src="gmail.png"></a>
         </p>
@@ -299,230 +394,560 @@
     </div>
   </div>
   <div class="big-center container">
-    <div class="section" name="introduction" id="introduction">
-      <div class="row"  style="padding:13px 15px;">
-        <div class="pull-left">
-            <img class="section-img" src="introduction.png" alt="introduction">
-        </div>
-        <div class="col-xs-8">
-          <p class="body-text">
-            Hi, this is who i am
-            <br> CS major at Mines graduating in december 2019
-            <br> moving to san diego to be a data scientist for viasat
-            <br> before i leave i would like to reflect on my time at mines and how the GCSP has shaped it
-            <br><br>Engineering is not what I thought it would be
-            <br>Rest is in google doc
-            <br>Nulla id condimentum arcu, venenatis accumsan elit. Maecenas id aliquet urna, sed sollicitudin massa. Nunc varius varius ultricies. Morbi dapibus imperdiet eros, et semper quam blandit maximus. Ut ultrices vel sem eget eleifend. Fusce accumsan felis et nibh molestie pellentesque. Mauris libero velit, consectetur nec neque in, ultricies ultricies tellus. Nulla tincidunt, dui sit amet congue pulvinar, velit enim pharetra nulla, quis suscipit leo diam eu ex. Integer erat nunc, accumsan sit amet massa sit amet, pulvinar interdum ante. Fusce tincidunt est ac odio rutrum, in vehicula augue molestie. Aliquam eu feugiat velit. Etiam condimentum risus nec mauris posuere facilisis.
-            <br><br>Maecenas ut malesuada ipsum, vitae commodo elit. Duis cursus magna sed nisi blandit, nec luctus erat tempus. Praesent pharetra risus eu luctus tincidunt. Morbi sit amet lacinia dolor. In blandit scelerisque est. Integer diam enim, mollis sit amet lectus ut, viverra luctus diam. Suspendisse fringilla ex ut orci semper dignissim. Fusce a felis sit amet diam cursus cursus et at augue.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!-- end introduction -->
-    <!-- overview -->
-    <!-- THIS ID AND CLASS SCHEME SUCKS BUT SEE ABOVE -->
-    <br><br><br><br><br>
-    <div class="navbar-width section" id="overview">
-      <center><img class="section-horizontal-img" src="overview.png" alt="overview"></center>
-      <br>
-      <ul class="nav nav-pills nav-justified" id="overview-pills">
-        <li id="egc-overview-li" class="active"><a data-toggle="tab" href="#egc-overview"><p class="selected-tab-text">The EGCs</p></a></li>
-        <li id="multidisciplinary-overview-li" class="nav-tab"><a data-toggle="tab" href="#multidisciplinary-overview"><p class="tab-text">Multidisciplinary</p></a></li>
-        <li id="entrepreneurship-overview-li" class="nav-tab"><a data-toggle="tab" href="#entrepreneurship-overview"><p class="tab-text">Entrepreneurship</p></a></li>
-        <li id="social-overview-li" class="nav-tab"><a data-toggle="tab" href="#social-overview"><p class="tab-text">Social Conciousness</p></a></li>
-        <li id="multicultural-overview-li" class="nav-tab"><a data-toggle="tab" href="#multicultural-overview"><p class="tab-text">Multicultural</p></a></li>
-        <li id="talent-overview-li" class="nav-tab"><a data-toggle="tab" href="#talent-overview"><p class="tab-text">Talent</p></a></li>
-      </ul>
-      <div class="tab-content">
-        <div id="egc-overview" class="tab-pane fade in active">
-          <br>
-          <p class="body-text">
-            Overview of the Engineering Grand Challenges
-            <br>In case any readers are unaware
-            <br>Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus porttitor enim dolor, a euismod justo lacinia vel. Sed at porta felis. Nam convallis justo eu elit aliquam venenatis. Nunc pharetra gravida semper. Curabitur elit felis, interdum vitae fermentum vel, sodales id neque. Suspendisse eu porttitor elit. Vivamus laoreet lacus eu commodo tempus. Sed in tellus eget ante porta lobortis congue in eros. Curabitur ac placerat ex. Integer ultrices vehicula rutrum. Quisque convallis vitae turpis vel ultrices. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-            <br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec ex in libero commodo dictum. Nunc at lacus nec lorem consectetur tincidunt in quis dolor. In tempus leo eu ex vehicula commodo. Proin viverra dignissim massa. Proin sagittis aliquam diam, sed porta nibh volutpat ut. Integer id varius lorem, eget volutpat diam. Nam elementum sem nisl, at accumsan augue vehicula eu. Etiam id tempus ipsum, ut iaculis lectus. Sed dignissim a enim in tincidunt. Curabitur tortor ex, aliquam quis dignissim id, imperdiet sit amet elit. Etiam sed auctor libero, quis iaculis felis. Donec in iaculis purus. Ut congue lobortis augue eu dignissim. Nunc lacinia ac justo ut tristique.
-          </p>
-        </div>
-        <div id="multidisciplinary-overview" class="tab-pane fade in active">
-          <br>
-          <p class="body-text">
-            Multidisciplinary Overview
-            <br>In google doc
-            <br>Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus porttitor enim dolor, a euismod justo lacinia vel. Sed at porta felis. Nam convallis justo eu elit aliquam venenatis. Nunc pharetra gravida semper. Curabitur elit felis, interdum vitae fermentum vel, sodales id neque. Suspendisse eu porttitor elit. Vivamus laoreet lacus eu commodo tempus. Sed in tellus eget ante porta lobortis congue in eros. Curabitur ac placerat ex. Integer ultrices vehicula rutrum. Quisque convallis vitae turpis vel ultrices. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-            <br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec ex in libero commodo dictum. Nunc at lacus nec lorem consectetur tincidunt in quis dolor. In tempus leo eu ex vehicula commodo. Proin viverra dignissim massa. Proin sagittis aliquam diam, sed porta nibh volutpat ut. Integer id varius lorem, eget volutpat diam. Nam elementum sem nisl, at accumsan augue vehicula eu. Etiam id tempus ipsum, ut iaculis lectus. Sed dignissim a enim in tincidunt. Curabitur tortor ex, aliquam quis dignissim id, imperdiet sit amet elit. Etiam sed auctor libero, quis iaculis felis. Donec in iaculis purus. Ut congue lobortis augue eu dignissim. Nunc lacinia ac justo ut tristique.
-          </p>
-        </div>
-
-        <div id="entrepreneurship-overview" class="tab-pane fade">
-          <br>
-          <p class="body-text">
-            Entrepreneurship Overview
-            <br>In google doc
-            <br>Duis rhoncus sollicitudin enim pulvinar vulputate. Aliquam eget ornare lacus. Maecenas et fermentum quam. In at pulvinar quam. Aenean massa ligula, efficitur sit amet eleifend sit amet, feugiat a tortor. Suspendisse accumsan, diam non sollicitudin molestie, lorem nisl mattis risus, eu aliquam diam magna eu dolor. Morbi luctus tellus vitae gravida molestie. Praesent nec tortor eu erat malesuada consequat vel eget dui. Ut pellentesque bibendum dolor a suscipit. Pellentesque ac erat risus. Nullam eu ligula laoreet, congue libero at, consequat felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent et condimentum enim, vitae tristique ligula.
-            <br><br>Fusce laoreet commodo consectetur. Mauris eget orci id justo suscipit imperdiet. Integer maximus quam non molestie viverra. Vivamus lobortis ex eget lorem vehicula viverra. Fusce ultricies massa malesuada urna bibendum, et euismod ante volutpat. Aliquam pulvinar, tellus eu dignissim cursus, velit mi pellentesque urna, a elementum turpis orci dapibus velit. Donec sed metus id urna varius blandit. Vivamus blandit metus nunc, vitae auctor orci pharetra vitae. Morbi varius malesuada vehicula. Donec sodales cursus tristique. Nulla accumsan mauris non eros placerat dictum. Aliquam pretium libero vitae nibh varius efficitur. Donec mollis pellentesque faucibus. Vestibulum vel purus a mi mattis viverra.
-          </p>
-        </div>
-
-        <div id="social-overview" class="tab-pane fade">
-          <br>
-          <p class="body-text">
-            Social Conciousness Overview
-            <br>In google doc
-            <br>Nullam convallis quam eget ligula maximus porta. Cras facilisis viverra tortor eget varius. Nulla feugiat ullamcorper est quis posuere. Donec mollis dapibus sagittis. Suspendisse ultricies rutrum turpis et fringilla. In ultrices tempus lectus, id maximus elit molestie vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id tempus nulla, a tempor lorem. Suspendisse blandit aliquam nisi ac varius. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In pellentesque ultricies ipsum, et tincidunt nulla sollicitudin hendrerit. Etiam faucibus scelerisque augue vel suscipit. Nam elementum convallis sapien sodales tempor. Phasellus aliquet dignissim consectetur. Maecenas tincidunt tempor massa eu ultrices. Integer scelerisque, libero et condimentum venenatis, nisl lacus maximus turpis, at facilisis urna urna nec tellus.
-            <br><br>Sed varius varius diam, in ultricies massa hendrerit sodales. Donec viverra mauris lectus, et porttitor massa feugiat quis. In tempus leo sem, sed tincidunt diam vestibulum ut. Fusce diam risus, tempor faucibus eros in, finibus hendrerit odio. In leo urna, lobortis ut ipsum sit amet, consequat placerat enim. Cras in nibh a libero vestibulum vulputate ut in mi. Etiam bibendum enim sit amet facilisis laoreet. Vivamus a ipsum mollis nisi tincidunt pellentesque. Phasellus varius, dui vel auctor pellentesque, mauris odio ultricies mauris, id lobortis libero arcu et nunc. Suspendisse commodo leo eget elit viverra ornare. Sed tristique gravida condimentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas maximus eleifend nulla, ac rutrum mi sollicitudin quis. Suspendisse euismod rutrum arcu, nec lacinia nisi tempus a. Fusce elit urna, dictum at mattis non, luctus vel purus.
-          </p>
-        </div>
-        <div id="multicultural-overview" class="tab-pane fade">
-          <br>
-          <p class="body-text">
-            Multicultural Overview
-            <br>In google doc
-            <br>Aliquam laoreet mi nec consectetur malesuada. Aenean ut dui at diam aliquam suscipit. Nunc sit amet cursus lectus. Duis molestie faucibus dignissim. Aenean sit amet fringilla metus. Sed sollicitudin, eros sit amet luctus condimentum, tortor massa porttitor lectus, ac pulvinar nulla mi porttitor lorem. Vestibulum scelerisque laoreet posuere. In hac habitasse platea dictumst. Aliquam tincidunt iaculis urna pellentesque lacinia. Phasellus vestibulum eget libero eget viverra. Nam rhoncus nisi eget suscipit fringilla. Donec molestie varius justo sit amet egestas. Vivamus et congue leo. Vivamus eget arcu interdum, dignissim mauris et, rutrum mauris. Aliquam nec suscipit enim. Etiam id dui quam.
-            <br><br>Nullam et massa at odio malesuada tincidunt. Donec faucibus tortor in ornare mattis. Etiam auctor risus eu erat scelerisque, in finibus dui laoreet. Sed molestie nec nisi facilisis dignissim. Pellentesque vitae mi at eros fringilla blandit quis eu velit. Etiam consequat tincidunt turpis sollicitudin rhoncus. Curabitur urna elit, molestie nec orci at, cursus volutpat eros. Integer egestas a eros in tempor. Fusce ac nisi accumsan, dictum arcu vitae, ullamcorper diam. In at nibh accumsan, iaculis velit a, vestibulum dui. Nullam mollis lorem non magna laoreet, sit amet egestas risus facilisis. Aliquam fermentum mi mi, et sodales diam porttitor eu. Nulla et maximus ligula. Sed venenatis libero eu semper facilisis.
-          </p>
-        </div>
-        <div id="talent-overview" class="tab-pane fade">
-          <br>
-          <p class="body-text">
-            Talent Overview
-            <br>In google doc
-            <br>Morbi rutrum, sem nec laoreet luctus, leo risus scelerisque enim, in volutpat sapien nisl at velit. Curabitur a cursus leo, commodo fringilla massa. Donec et blandit ante. Quisque porttitor sollicitudin justo, et iaculis nunc egestas id. Pellentesque efficitur quam ex. Donec id felis dolor. Pellentesque et nulla condimentum, iaculis enim nec, finibus lorem. Duis cursus, nisl ac pharetra egestas, dolor lorem rutrum nisl, id malesuada metus mauris sed dolor.
-            <br><br>Vivamus velit nibh, tempus vitae sem vulputate, pulvinar lobortis ligula. Curabitur ut ligula ac lectus sagittis ullamcorper. Ut in nisl id lectus suscipit dapibus vel id lectus. Nam vitae felis et nisl tempor pretium. Sed luctus, libero nec tempor convallis, nisi nisi condimentum lectus, ac commodo nunc lectus ut arcu. Donec rhoncus commodo sapien. Morbi tristique, magna id tempor bibendum, lacus eros euismod odio, sit amet molestie diam ligula sed nulla. Etiam luctus vehicula erat at tincidunt. Duis et placerat justo. Donec finibus ornare sem vel convallis. Pellentesque rutrum lacinia risus in lacinia. Vestibulum ut mauris vitae nulla cursus convallis ac nec est. Sed vitae enim posuere, egestas odio sit amet, iaculis dolor. Nam laoreet elit id lacus porttitor, id sodales sapien accumsan.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!-- end overview -->
-    <!-- competencies -->
-    <br><br><br><br><br>
-    <div class="navbar-width section" id="competencies">
-      <center><img class="section-horizontal-img" src="competencies.png" alt="competencies"></center>
-      <br>
-      <ul class="nav nav-pills nav-justified" id="competencies-pills">
-        <li id="multidisciplinary-competency-li" class="active"><a data-toggle="tab" href="#multidisciplinary-competency"><p class="selected-tab-text">Multidisciplinary</p></a></li>
-        <li id="entrepreneurship-competency-li"><a data-toggle="tab" href="#entrepreneurship-competency"><p class="tab-text">Entrepreneurship</p></a></li>
-        <li id="social-competency-li"><a data-toggle="tab" href="#social-competency"><p class="tab-text">Social Conciousness</p></a></li>
-        <li id="multicultural-competency-li"><a data-toggle="tab" href="#multicultural-competency"><p class="tab-text">Multicultural</p></a></li>
-        <li id="talent-competency-li"><a data-toggle="tab" href="#talent-competency"><p class="tab-text">Talent</p></a></li>
+    <div class="top-navbar-width section" id="content">
+      <ul class="nav nav-pills nav-justified" id="content-pills">
+        <li id="introduction-tab-li" class="nav-tab active">
+          <a data-toggle="tab" href="#introduction-tab">
+            <p class="top-pill-text selected-tab-text">Introduction</p>
+          </a>
+        </li>        
+        <li id="pillars-tab-li" class="nav-tab">
+          <a data-toggle="tab" href="#pillars-tab">
+            <p class="top-pill-text tab-text">Pillars</p>
+          </a>
+        </li>        
+        <li id="reflection-tab-li" class="nav-tab">
+          <a data-toggle="tab" href="#reflection-tab">
+            <p class="top-pill-text tab-text">Reflections</p>
+          </a>
+        </li>        
+        <li id="synthesis-tab-li" class="nav-tab">
+          <a data-toggle="tab" href="#synthesis-tab">
+            <p class="top-pill-text tab-text">Synthesis</p>
+          </a>
+        </li>        
+        <li id="analysis-tab-li" class="nav-tab">
+          <a data-toggle="tab" href="#analysis-tab">
+            <p class="top-pill-text tab-text">Analysis</p>
+          </a>
+        </li>
       </ul>
 
       <div class="tab-content">
-        <div id="multidisciplinary-competency" class="tab-pane fade in active">
-          <br>
-          <p class="body-text">
-            Multidisciplinary Competency
-            <br>In google doc
-            <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam lacinia ante, vitae commodo sem interdum sit amet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent a lorem eu ex accumsan varius sed non purus. Sed bibendum a sapien id tempor. Duis a fringilla mi. Praesent vitae felis orci. Suspendisse potenti. Nullam vitae diam sit amet nunc faucibus dictum nec volutpat tellus. Maecenas metus sem, congue eu posuere ut, dignissim a enim. Nulla et nibh quis mi efficitur consequat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-            <br><br>Integer ornare nisl vitae mattis vestibulum. Ut vel sapien arcu. In condimentum nisl ut interdum semper. Morbi gravida libero at consectetur dictum. Vivamus eu lacus at odio ultrices aliquet. Suspendisse potenti. Donec magna mi, elementum at ante vitae, consectetur imperdiet libero. Curabitur tempor tempus sapien ut consequat. Nullam non nisi convallis, cursus nulla id, egestas orci. Nulla hendrerit sed arcu id consequat. Vestibulum neque tellus, ultrices non scelerisque sed, gravida nec leo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi eu nibh consequat diam efficitur dapibus.
-            <br><br>Praesent vehicula urna purus, a gravida turpis venenatis ut. Aliquam dictum iaculis nulla, vulputate porttitor nibh vehicula eget. Proin tincidunt ipsum id nisi vehicula, eget iaculis erat scelerisque. Maecenas diam massa, semper in purus id, pulvinar varius purus. Nunc nec lacus molestie, auctor tellus in, mollis sapien. Donec vulputate dictum diam a hendrerit. Cras vitae magna fermentum, laoreet tortor vel, suscipit felis. Fusce venenatis nec diam eu volutpat. Cras viverra vestibulum consequat. Suspendisse non ex scelerisque, ornare massa ut, gravida diam. Aliquam at tellus eu purus vulputate imperdiet. Quisque odio tortor, pharetra in tincidunt vel, ultricies ut sem. Duis eget vulputate arcu, ut convallis magna. Proin vehicula nibh at nisl vestibulum, et placerat mi aliquet. Proin vitae ex sit amet ante aliquet sollicitudin.
-            <br><br>Donec tellus erat, porta ornare mauris et, blandit luctus arcu. Aenean imperdiet massa tellus, vel sollicitudin ipsum finibus vitae. Vivamus maximus tellus sed fermentum ullamcorper. Duis porttitor varius sapien eget ornare. Nulla id metus sit amet tortor malesuada ultrices quis ut augue. Praesent ut consectetur risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fermentum hendrerit tincidunt. Nullam pellentesque sapien et libero maximus dapibus. Curabitur condimentum diam vitae interdum lobortis. Integer nec sagittis justo, eget porttitor massa. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla at quam eu nunc fringilla scelerisque. Vestibulum venenatis, erat non condimentum pretium, diam nulla placerat elit, vel eleifend eros leo id mauris.
-            <br><br>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis ut turpis mauris. Duis luctus, lectus quis ultrices ultrices, leo sapien auctor ligula, in consectetur justo nisl id nulla. Nam velit ligula, pretium non lacinia id, molestie vel mi. Morbi sit amet ornare justo, id mollis diam. Donec interdum congue felis at vestibulum. Fusce eget metus id massa sollicitudin tincidunt id eget nunc. Sed id orci elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras tincidunt augue vitae posuere tristique. Integer neque est, aliquam et ultricies fermentum, interdum vel arcu. Sed hendrerit interdum pulvinar. Integer dui eros, congue quis posuere id, facilisis in est. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin gravida ultrices mattis.
-          </p>
-        </div>
+        <div id="introduction-tab" class="tab-pane fade in active">
+          <div class="section" name="introduction" id="introduction">
+            <br><br><br>
+            <!-- <div class="container"> -->
+              <div class="row"><!--   style="padding:13px 15px;"> -->
+                <div class="col-xs-4 pull-left">
+                    <img class="section-img avatar" src="images/me2.png" alt="me">
+                </div>
+                <div class="col-xs-8">
+                  <p class="body-text">
+                    Hi, and welcome to my Grand Challenges Scholars Program portfolio! My name is Daniel Personius and I am a computer science undergraduate at the Colorado School of Mines in Golden, Colorado. I will be graduating this fall before moving to San Diego be a data scientist for the communications company Viasat. As my final semester comes to a close, I would like to reflect on my time at Mines and how this program has shaped it.
+                    <br><br>For readers who may not know, The GCSP is an outcomes-based at eighty-one schools across many countries. It aims to enhance engineering students’ social, political, economic, and social awareness and skills, preparing them to take on the National Academy of Engineering’s Grand Challenges of Engineering. These are fourteen large-scale issues facing the 21st century, spanning borders, professions, and cultures. Problems like preventing nuclear terror, ensuring access to clean water, reverse engineering the brain, and engineering the tools for scientific discovery. Problems that we as a global society need to address in order to maintain our health, joy, and sustainability as a species. At Mines, the scholars program has students complete five pillars to educate them in more than just math and science: Interdisciplinary Curriculum, a Global Dimension, Entrepreneurship, Service Learning, and Research or Project Experience.
+                    <br><br>Throughout the program, I have had many amazing opportunities to gain knowledge and experience in these areas of expertise. Next is a brief summary of each activity, followed by reflections, a synthesis piece, and my feedback on the program as a whole.
 
-        <div id="entrepreneurship-competency" class="tab-pane fade">
-          <br>
-          <p class="body-text">
-            Entrepreneurship Competency
-            <br>In google doc
-            <br>Donec porttitor libero ac orci lacinia, sit amet hendrerit tortor eleifend. Suspendisse potenti. Phasellus venenatis ullamcorper pulvinar. Donec non ante at quam fringilla volutpat. Aenean tincidunt, lectus et ultricies tempor, mauris dolor semper enim, sit amet rhoncus nunc lorem laoreet velit. Vivamus eu libero pulvinar, lacinia dui elementum, iaculis nunc. Maecenas vel turpis ex.
-            <br><br>Donec eros dui, volutpat vitae mollis ullamcorper, dapibus quis dolor. Aenean maximus urna nulla, eget viverra mi efficitur volutpat. Vestibulum enim justo, facilisis eu eros aliquam, vulputate tempus lectus. Curabitur in mattis odio, vitae mattis ligula. Nulla quis iaculis nibh. Duis bibendum, elit consequat porttitor blandit, lectus risus viverra nisl, et eleifend tellus arcu sit amet est. Curabitur feugiat posuere ornare. Sed laoreet nisi nibh, eget aliquam ex vestibulum quis. Phasellus ornare risus eget auctor imperdiet. Aliquam augue neque, lacinia in consectetur nec, tristique vitae ipsum. Quisque quis lectus vel neque aliquet facilisis. Aenean pulvinar posuere eros. Nullam quis viverra nulla, a facilisis turpis.
-            <br><br>Etiam condimentum dolor eu elit eleifend pulvinar. Sed felis purus, convallis accumsan posuere ac, congue auctor nunc. Vivamus molestie odio at mauris convallis rhoncus. Fusce molestie orci id lacinia ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque semper sapien eget magna viverra scelerisque. Maecenas feugiat elementum urna et tincidunt. Ut nisl ante, elementum eget pulvinar vitae, consequat sollicitudin lectus. Quisque sed massa nibh. Morbi facilisis magna non mauris lobortis mollis consequat at ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam in tincidunt velit. Etiam vehicula risus ac ligula pellentesque, ut varius nibh posuere. Aenean suscipit massa sit amet metus commodo, eu finibus nibh condimentum. Donec vehicula maximus nibh, eget iaculis metus porttitor sit amet. Vivamus at tortor ex.
-            <br><br>Etiam scelerisque nibh et suscipit molestie. Donec vitae ante sed odio ullamcorper tristique. Sed sit amet velit sit amet dolor faucibus porttitor non vitae neque. Donec tincidunt facilisis nibh id sagittis. Nam in risus vitae metus ornare imperdiet id eu magna. Sed tincidunt massa leo, in sagittis lacus gravida sed. Integer tincidunt iaculis volutpat. Integer convallis, nulla a eleifend dictum, lacus arcu ultricies neque, non ultrices risus enim nec mauris. Sed rutrum mattis ornare. Sed dictum risus quis nisl dignissim lacinia. Nullam faucibus eros et nisi sagittis, quis maximus ex mattis. Proin eu dolor eget lectus efficitur consectetur non nec mi.
-            <br><br>Duis pellentesque felis viverra magna finibus tincidunt. Nulla id accumsan magna. Cras efficitur, magna quis ultricies pulvinar, diam ante vulputate massa, eget pretium orci massa in dolor. Aliquam placerat dui ac ex condimentum, a blandit tellus mollis. Pellentesque eleifend iaculis mauris, quis condimentum odio pharetra at. Aenean dapibus, quam cursus cursus sollicitudin, felis libero ultrices mauris, vitae sodales nunc lorem non enim. Mauris tristique elementum urna. In vulputate felis a lobortis volutpat. Ut imperdiet sapien in orci auctor cursus.
-          </p>
+                  </p>
+                </div>
+              </div>
+            <!-- </div> -->
+          </div>
         </div>
+<!-- OVERVIEW -->
+        <div id="pillars-tab" class="tab-pane fade">
+          <div class="navbar-width section" id="pillars">
+            <!-- <center><img class="section-horizontal-img" src="overview.png" alt="overview"></center> -->
+            <!-- <br> -->
+            <!-- <p class="body-text">Throughout the program, I have had many amazing opportunities to gain knowledge and experience in these areas of expertise. Here is a brief summary of each activity, followed by reflection. </p> -->
+            <!-- <br> -->
+            <ul class="nav nav-pills nav-justified" id="overview-pills">
+              <li id="multidisciplinary-overview-li" class="active">
+                <a data-toggle="tab" href="#multidisciplinary-overview">
+                  <p class="selected-tab-text">Interdisciplinary</p>
+                </a>
+              </li>
+              <li id="entrepreneurship-overview-li" class="nav-tab">
+                <a data-toggle="tab" href="#entrepreneurship-overview">
+                  <p class="tab-text">Entrepreneurship</p>
+                </a>
+              </li>
+              <li id="social-overview-li" class="nav-tab">
+                <a data-toggle="tab" href="#social-overview">
+                  <p class="tab-text">Service Learning</p>
+                </a>
+              </li>
+              <li id="multicultural-overview-li" class="nav-tab">
+                <a data-toggle="tab" href="#multicultural-overview">
+                  <p class="tab-text">Global</p>
+                </a>
+              </li>
+              <li id="talent-overview-li" class="nav-tab">
+                <a data-toggle="tab" href="#talent-overview">
+                  <p class="tab-text">Project</p>
+                </a>
+              </li>
+            </ul>
+            <div class="row justify-content-md-center">
+              <div class="tab-content">                
+                <div id="multidisciplinary-overview" class="tab-pane fade in active">
+                  <br>
+                  <!-- carousel -->
+                  <div id="multidisciplinary-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                      <li data-target="#multidisciplinary-carousel" data-slide-to="0" class="active"></li>
+                      <li data-target="#multidisciplinary-carousel" data-slide-to="1"></li>
+                      <li data-target="#multidisciplinary-carousel" data-slide-to="2"></li>
+                      <li data-target="#multidisciplinary-carousel" data-slide-to="3"></li>
+                      <li data-target="#multidisciplinary-carousel" data-slide-to="4"></li>
+                    </ol>
 
-        <div id="social-competency" class="tab-pane fade">
-          <br>
-          <p class="body-text">
-            Social Competency
-            <br>In google doc
-            <br>Vestibulum sapien nisi, elementum a hendrerit ac, malesuada quis quam. Pellentesque fringilla maximus augue, vitae placerat dolor porttitor eu. Donec at ante id tortor egestas tristique. Nam vitae lacus metus. Proin bibendum gravida malesuada. Morbi sed vulputate dui. Integer vulputate justo non sapien pharetra, vitae facilisis leo molestie. Vivamus tincidunt orci dui, a efficitur felis lobortis sit amet.
-            <br><br>Donec eget ante ut justo finibus placerat id non tellus. Donec imperdiet non metus eget mattis. Curabitur sed facilisis sem, id porta ante. Cras rutrum eget sapien sit amet bibendum. Donec eget est congue, fermentum elit quis, interdum augue. Sed placerat, dolor sed ornare consequat, purus leo faucibus urna, sed scelerisque nisi mauris nec dolor. Ut suscipit aliquet tortor ut pretium. Aliquam sit amet scelerisque quam. Fusce massa ipsum, pharetra pulvinar tempus a, molestie id nisi. Maecenas euismod justo ex, at auctor neque rutrum quis. Proin vestibulum auctor urna, sed pellentesque augue consequat sed. Ut iaculis volutpat pellentesque. Duis vitae arcu sit amet lorem mattis imperdiet a placerat justo. Quisque id massa porta risus interdum mattis.
-            <br><br>Quisque fermentum ipsum eu orci molestie, nec ornare quam sodales. Suspendisse vestibulum consequat nisi, consequat facilisis metus consequat at. Nulla ut fringilla diam. Vivamus non velit ipsum. Nam congue lacus nec tellus consectetur, ac venenatis eros ultricies. Donec at erat in odio blandit dignissim vitae et enim. Duis semper non turpis vel molestie. Phasellus odio dui, fermentum in mi quis, condimentum pretium nisl. Vivamus facilisis non sapien sit amet sagittis. In pulvinar finibus urna, id posuere turpis commodo et. Proin at sapien libero. Vestibulum in eros sem. Phasellus interdum suscipit sagittis. Duis erat nulla, finibus nec consectetur in, aliquam ac mi.
-            <br><br>Vivamus placerat mollis libero, vel hendrerit metus sodales in. Vivamus quis sodales purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam dapibus malesuada arcu. Vestibulum mattis tortor gravida velit varius, eget consectetur metus facilisis. Ut eget venenatis magna, eu vulputate orci. Pellentesque gravida sem enim.
-            <br><br>Curabitur gravida, metus quis vestibulum feugiat, sapien ligula interdum enim, vitae semper ligula lectus at purus. Quisque at facilisis lectus. Nulla ut nunc in justo sodales luctus. Suspendisse a porttitor metus. Mauris facilisis feugiat risus at rutrum. Aliquam quis est fermentum, tempor ante ut, imperdiet nisl. In dapibus aliquam ipsum nec viverra.
-          </p>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                      <div class="item active">
+                        <img src="images/vending-dark.png" alt="Vending the Future">
+                        <div class="carousel-caption carousel-caption-light-image">
+                          <h3 class="caption-title">Vending the Future</h3>
+                          <p class="caption-text">Improving access to nutritional food for people who are homeless</p>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <img src="images/canary-small2.jpg" alt="Team Canary">
+                        <div class="carousel-caption carousel-caption-light-image">
+                          <h3  class="caption-title">Team Canary</h3>
+                          <p class="caption-text">Sustaining 10 billion people by combating air pollution health risks</p>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <img src="images/canary-overview.png" alt="canary-overview">
+                        <div class="carousel-caption carousel-caption-light-image">
+                          <h3 class="caption-title">The Idea</h3>
+                          <p class="caption-text">The pollution mask that isn't a mask</p>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <img src="images/canary-tech2.png" alt="canary-tech">
+                        <div class="carousel-caption carousel-caption-light-image">
+                          <h3 class="caption-title">The Tech</h3>
+                          <p class="caption-text">Design for masks integrated into existing fashion</p>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <img src="images/canary-business.png" alt="canary-business">
+                        <div class="carousel-caption carousel-caption-light-image">
+                          <h3 class="caption-title">The Business</h3>
+                          <p class="caption-text">How we will reach the world</p>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#multidisciplinary-carousel" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#multidisciplinary-carousel" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+                  <!-- /carousel -->
+                  <br>
+                  <p class="body-text">
+                    For my interdisciplinary experience, I completed two activities. My freshman year, I worked with a team of chemical and mechanical engineers on a term project for a Nature and Human Values course. This course combined design and philosophy to introduce students to the core ideas of human-centered engineering. Over the course of a semester, we studied the living situations of the homeless population in Denver, Colorado, then proposed a product to improve those conditions. The problem we saw as most pressing at the time was homeless individuals’ access to nutritional food, mostly due to the high prices in the city and overcrowded and underfunded shelters. To mitigate this, we designed a donation system for restaurants and other places of business to transfer uneaten or extra food into distributed vending machines to be bought by homeless and low-income individuals. 
+                    <br><br>Later on during my senior year, I entered a design competition with a team of fellow Scholars focused on the Grand Challenges. We had three months to design a product from scratch, create a company around it, and compete against teams from across the United States in Irvine, California. This winners of this stage moved on to pitch at the global student collaboration lab preceding the 2019 EGC Global Summit in London. We did not move onto this final round, but our company Canary has lived on. Canary a patent-pending design for integrating personal air pollution masks into everyday clothing. Traditional masks are often avoided due to inconvenience and negative stigma in many countries, so we made a way for the important part of the mask, the air filter, to fit into more comfortable and appealing clothing, like Buffs, scarves, and jackets. This project was a wonderful experience for me — I had the chance to work on a product not built with code, learn from my peers of metallurgical, mechanical, chemical, and electrical engineers, and apply knowledge and skills learned from my Entrepreneurship pillar.
+                  </p>
+                </div>
+
+                <div id="entrepreneurship-overview" class="tab-pane fade">
+                  <br>
+                  <!-- carousel -->
+                  <div id="entrepreneurship-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+                    <!-- Indicators -->
+                    <!-- <ol class="carousel-indicators">
+                      <li data-target="#entrepreneurship-carousel" data-slide-to="0" class="active"></li>
+                    </ol> -->
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                      <div class="item active">
+                        <img src="images/gavelgo.png" alt="gavelgo">          
+                      </div>
+                    </div>
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#entrepreneurship-carousel" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#entrepreneurship-carousel" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+                  <!-- /carousel -->
+                  <br>
+                  <p class="body-text">
+                    My Entrepreneurship competency was filled by co-founding a company my freshman year. Through a friend, I met a local business-owner who had an idea for a professional services startup and was in need of both a development team and people to run the business and refine his idea. For two and a half years, I worked to develop the technology for the company, as well as hire other developers, speak with legal consultants and potential investors, run beta tests with potential customers, write business plans and overview documents, as well as give market reports. I left the company while it was still in development due to school and work constraints, but in my time there, I gained a more clear understanding of how companies start and become successful, but more importantly, how and why they can fail.
+                  </p>
+                </div>
+
+                <div id="social-overview" class="tab-pane fade">
+                  <br>
+                    <!-- carousel -->
+                    <div id="social-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+                      <!-- Indicators -->
+                      <ol class="carousel-indicators">
+                        <li data-target="#social-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#social-carousel" data-slide-to="1"></li>
+                        <li data-target="#social-carousel" data-slide-to="2"></li>
+                        <li data-target="#social-carousel" data-slide-to="3"></li>
+                        <li data-target="#social-carousel" data-slide-to="4"></li>
+                      </ol>
+
+                      <!-- Wrapper for slides -->
+                      <div class="carousel-inner">
+                        <div class="item active">
+                          <img src="images/starter-kit2.png" alt="arduino">
+                          <div class="carousel-caption carousel-caption-light-image">
+                            <h3 class="caption-title">Robotics and Programming</h3>
+                            <p class="caption-text">with Arduino</p>
+                          </div>
+                        </div>                  
+
+                        <div class="item">
+                          <img src="images/conditional.png" alt="conditional">
+                          <div class="carousel-caption carousel-caption-light-image">
+                            <h3 class="caption-title">Programming</h3>
+                            <p class="caption-text">Teaching the fundamentals</p>
+                          </div>
+                        </div>
+
+                        <div class="item">
+                          <img src="images/build3.png" alt="build">
+                          <div class="carousel-caption carousel-caption-light-image">
+                            <h3 class="caption-title">In-class Builds</h3>
+                            <p class="caption-text">Hands-on experience through open-ended projects</p>
+                          </div>
+                        </div>
+
+                        <div class="item">
+                          <img src="images/devhack-model2.png" alt="devhack-model">
+                          <div class="carousel-caption carousel-caption-light-image">
+                            <h3 class="caption-title">Churn Prevention Model</h3>
+                            <p class="caption-text">...</p>
+                          </div>
+                        </div>
+
+                        <div class="item">
+                          <img src="images/devhack-flow3.jpeg" alt="devhack-flow">
+                          <div class="carousel-caption carousel-caption-light-image">
+                            <h3 class="caption-title">End-to-end Service</h3>
+                            <p class="caption-text">Immediate and simple suggestions for care agents</p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Left and right controls -->
+                      <a class="left carousel-control" href="#social-carousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="right carousel-control" href="#social-carousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
+                    <!-- /carousel -->
+                    <br>
+                  <p class="body-text">
+                    The Service Learning Pillar is an opportunity to address problems that impact people and their communities, preparing students to better handle the social dimensions inherent to Grand Challenges.
+                    <br><br>As a sophomore, I volunteered at the Excel Academy in Arvada, Colorado teaching an after-school robotics and programming class to 7th and 8th graders. We met once a week for a semester, each time with a lesson on fundamental programming concepts and an open-ended circuit build.
+                    <br><br>I interned this summer as a software engineer for Viasat, a broadband communications company based in Carlsbad, California. At an internal hackathon, our team of software engineering, data analytics, marketing, and business interns developed a machine learning model to better predict customer churn and turnover, providing possible discounts and plan changes for customer care agents to suggest to dissatisfied customers.
+
+                  </p>
+                </div>
+                <div id="multicultural-overview" class="tab-pane fade">
+                  <br>
+                  <!-- carousel -->
+                  <div id="multicultural-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                      <li data-target="#multicultural-carousel" data-slide-to="0" class="active"></li>
+                      <li data-target="#multicultural-carousel" data-slide-to="1"></li>
+                      <li data-target="#multicultural-carousel" data-slide-to="2"></li>
+                      <li data-target="#multicultural-carousel" data-slide-to="3"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                      <div class="item active">
+                        <img src="images/asia.png" alt="apas">                
+                      </div>
+                      <div class="item">
+                        <img src="images/paper2.png" alt="paper">
+                        <div class="carousel-caption carousel-caption-light-image">
+                          <h3 class="caption-title">Research Paper</h3>
+                          <p>A look at how ...</p>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <img src="images/gcsp2.png" alt="ggcs">
+                        <div class="carousel-caption carousel-caption-light-image">
+                          <h3 class="caption-title">GGCS 2019</h3>
+                          <p>The Scholars meet in London</p>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <img src="images/medblock2.png" alt="medblock">
+                        <div class="carousel-caption carousel-caption-light-image">
+                          <h3 class="caption-title">MedBlock</h3>
+                          <p>Advancing Health Informatics with Blockchain technology</p>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#multicultural-carousel" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#multicultural-carousel" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+                  <!-- /carousel -->
+                  <br>
+                  <p class="body-text">
+                    The Global pillar aims at bolstering the understanding of different cultures to ensure cultural acceptance of proposed engineering solutions. At Mines, I achieved this through both in-class and hands-on experiences.
+                    <br><br>My junior year, I enrolled in Asia: Politics and Society, a course at Mines taught by Professor James Jesudason. It highlighted the social, political, economic, and cultural environments of Eastern and Southeastern asian countries. As a final project, I wrote a research paper exploring how Myanmar’s Rohingya refugee crisis is influenced and fueled in part by social media platforms like Facebook and Twitter. Myanmar has been plagued for decades with violent conflict between their military and various ethnic and religious groups. Social media in no way induced the struggle, but in recent years, has been a powerful tool for the military to spread misinformation, cultivating a collective hatred for these minorities.
+                    <br><br>In the fall of 2019, my senior year, I attended the Global Grand Challenges Summit Student Collaboration Lab in London. There I competed in a one day design competition on a team of students from China, the U.K., and the U.S. We designed a data management system for the healthcare industry based on Blockchain technology and the Ethereum network.
+
+                  </p>
+                </div>
+                <div id="talent-overview" class="tab-pane fade">
+                  <br>
+                    <!-- carousel -->
+                    <div id="project-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+                      <!-- Indicators -->
+                      <ol class="carousel-indicators">
+                        <li data-target="#project-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#project-carousel" data-slide-to="1"></li>
+                        <li data-target="#project-carousel" data-slide-to="2"></li>
+                        <li data-target="#project-carousel" data-slide-to="3"></li>
+                      </ol>
+                      <!-- Wrapper for slides -->
+                      <div class="carousel-inner">
+                        <div class="item active">
+                          <img src="images/lockheed2.png" alt="lockheed">
+                          <div class="carousel-caption carousel-caption-light-image">
+                            <h3>Satellite Simulation and Manipulation</h3>
+                            <p class="caption-text">with Unity and WebVR</p>
+                          </div>
+                        </div>
+
+                        <div class="item">
+                          <img src="images/lockheed-title-slide.png" alt="title slide">
+                          <div class="carousel-caption carousel-caption-light-image">
+                            <h3>text</h3>
+                            <p class="caption-text">text</p>
+                          </div>
+                        </div>
+
+                        <div class="item">
+                          <img src="images/user2.png" alt="user">
+                          <div class="carousel-caption carousel-caption-light-image">
+                            <h3>text text</h3>
+                            <p class="caption-text">text texttext texttext texttext text</p>
+                          </div>
+                        </div>
+
+                        <div class="item">
+                          <img src="images/vr.png" alt="vr">
+                          <div class="carousel-caption carousel-caption-light-image">
+                            <h3>Early Prototype</h3>
+                            <p class="caption-text">text texttext texttext texttext text</p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Left and right controls -->
+                      <a class="left carousel-control" href="#project-carousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="right carousel-control" href="#project-carousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
+                    <!-- /carousel -->
+                  <br>
+                  <p class="body-text">
+                    The project-based pillar is a chance for students to unify and apply the skills they have learned from the Scholar Program to a Grand Challenges-related problem.
+                    <br><br>During the fall of 2019, I have worked with a group of students from Mines to build a virtual reality application for Lockheed Martin. This application is for visualizing data from space object catalogs and alerting users to potential space events, like pending collisions. It consists of a global view, showing space objects and observation sites from an in-orbit perspective, a ground view that has the user look up from those observation sites, and various data-driven views for aggregating information regarding those objects, as well as monitoring events. In the future, the program will be expanded to allow the user to directly adjust orbits and send instructions to satellites.
+                    <br><br>Space object visualization and manipulation are related to the Grand Challenges in that applications such as our own contribute to the Challenge of Engineering the Tools for Scientific Discovery. Lockheed Martin was previously was using Tableau for visualization, a powerful visualization tool, but not well suited for satellite data. By giving the company and its clients more engaging and intuitive insight into their data, they can better understand and act on it, thus more efficiently and effectively utilizing their satellites for gathering data about and connecting the world.
+
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div id="multicultural-competency" class="tab-pane fade">
-          <br>
-          <p class="body-text">
-            Multicultural Competency
-            <br>In google doc
-            <br>Aliquam nec sem vitae ipsum tempor elementum quis sit amet massa. Fusce lacinia nulla sit amet massa varius convallis. Etiam fermentum quam et efficitur scelerisque. Phasellus arcu tortor, porttitor rhoncus condimentum in, hendrerit nec ex. Aliquam dictum, felis at finibus fermentum, tortor massa molestie sapien, at placerat neque odio non tortor. Curabitur consectetur dictum tempor. Sed auctor tincidunt dui a porta. Maecenas id vulputate sapien. Maecenas hendrerit elit sed nisi malesuada semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse suscipit turpis eget ante blandit finibus. Suspendisse condimentum fermentum odio nec feugiat. Etiam luctus auctor enim non euismod. Sed lacinia nisl ac est aliquet, nec tincidunt dolor laoreet. Quisque pellentesque, arcu non tincidunt viverra, justo arcu cursus magna, sed volutpat elit enim vitae lorem. Mauris nec mi leo.
-            <br><br>Suspendisse potenti. Cras congue dolor nisl, ut ullamcorper metus porta sit amet. In ac arcu ipsum. Donec vitae bibendum odio. Vestibulum tempus molestie convallis. Proin ut velit sapien. Aenean ut eleifend orci.
-            <br><br>Vestibulum vitae libero semper, maximus metus ut, laoreet sem. Phasellus lobortis enim sit amet orci volutpat feugiat a pretium elit. Sed nec interdum velit. Suspendisse nisl velit, commodo a bibendum sed, iaculis eu nunc. Cras nunc nunc, pharetra lacinia orci in, eleifend ullamcorper ex. Curabitur euismod dolor eu ligula elementum aliquam. Maecenas varius augue in lorem fringilla tristique. Duis feugiat aliquam ligula a aliquam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent id quam mauris. Nullam pellentesque vestibulum lacus quis finibus. Maecenas venenatis in lacus eleifend auctor. Integer viverra a ex vitae sodales. Sed condimentum elit sollicitudin, vulputate mauris volutpat, varius felis. Quisque tempus ornare metus malesuada laoreet.
-            <br><br>Quisque quis tellus nunc. Aliquam consectetur tempus tempor. Proin egestas at dolor vel mattis. Fusce eget finibus nisl. Nunc a metus ut sem vulputate ultrices. Pellentesque eget quam quis dui suscipit porttitor. Nullam semper, ante ut condimentum finibus, orci quam rutrum purus, in laoreet lorem odio ut erat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris ac mauris leo. Morbi quis odio vehicula, ultrices est non, feugiat urna.
-            <br><br>Duis ullamcorper gravida metus, id tristique augue vehicula consequat. Nam tincidunt mi elit, sed molestie mauris sagittis eu. Quisque sit amet aliquet sem, vel imperdiet mi. Donec semper sed velit eget efficitur. Nulla facilisi. Quisque vel dignissim sem. Duis quis lectus ut mi porta pretium. Morbi laoreet cursus lacus eu vestibulum. Vestibulum aliquam dapibus lorem, vitae consectetur neque commodo vel. Donec condimentum elit id leo feugiat, ac venenatis libero auctor. Ut vel egestas lorem. Pellentesque pretium consequat ante ut elementum. Curabitur rutrum lacus vitae turpis eleifend, et fringilla ligula convallis.
-          </p>
+<!-- /overview -->
+<!-- reflections -->
+        <div id="reflection-tab" class="tab-pane fade">
+          <div class="navbar-width section" id="reflection">
+            <ul class="nav nav-pills nav-justified" id="reflection-pills">
+              <li id="multidisciplinary-reflection-li" class="active"><a data-toggle="tab" href="#multidisciplinary-reflection"><p class="selected-tab-text">Interdisciplinary</p></a></li>
+              <li id="entrepreneurship-reflection-li"><a data-toggle="tab" href="#entrepreneurship-reflection"><p class="tab-text">Entrepreneurship</p></a></li>
+              <li id="social-reflection-li"><a data-toggle="tab" href="#social-reflection"><p class="tab-text">Service Learning</p></a></li>
+              <li id="multicultural-reflection-li"><a data-toggle="tab" href="#multicultural-reflection"><p class="tab-text">Global</p></a></li>
+              <li id="talent-reflection-li"><a data-toggle="tab" href="#talent-reflection"><p class="tab-text">Project</p></a></li>
+            </ul>
+
+            <div class="tab-content">
+              <div id="multidisciplinary-reflection" class="tab-pane fade in active">
+                <br>
+                <p class="body-text">
+                  Multidisciplinary reflection
+                  <br>In google doc
+                  <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam lacinia ante, vitae commodo sem interdum sit amet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent a lorem eu ex accumsan varius sed non purus. Sed bibendum a sapien id tempor. Duis a fringilla mi. Praesent vitae felis orci. Suspendisse potenti. Nullam vitae diam sit amet nunc faucibus dictum nec volutpat tellus. Maecenas metus sem, congue eu posuere ut, dignissim a enim. Nulla et nibh quis mi efficitur consequat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                  <br><br>Integer ornare nisl vitae mattis vestibulum. Ut vel sapien arcu. In condimentum nisl ut interdum semper. Morbi gravida libero at consectetur dictum. Vivamus eu lacus at odio ultrices aliquet. Suspendisse potenti. Donec magna mi, elementum at ante vitae, consectetur imperdiet libero. Curabitur tempor tempus sapien ut consequat. Nullam non nisi convallis, cursus nulla id, egestas orci. Nulla hendrerit sed arcu id consequat. Vestibulum neque tellus, ultrices non scelerisque sed, gravida nec leo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi eu nibh consequat diam efficitur dapibus.
+                  <br><br>Praesent vehicula urna purus, a gravida turpis venenatis ut. Aliquam dictum iaculis nulla, vulputate porttitor nibh vehicula eget. Proin tincidunt ipsum id nisi vehicula, eget iaculis erat scelerisque. Maecenas diam massa, semper in purus id, pulvinar varius purus. Nunc nec lacus molestie, auctor tellus in, mollis sapien. Donec vulputate dictum diam a hendrerit. Cras vitae magna fermentum, laoreet tortor vel, suscipit felis. Fusce venenatis nec diam eu volutpat. Cras viverra vestibulum consequat. Suspendisse non ex scelerisque, ornare massa ut, gravida diam. Aliquam at tellus eu purus vulputate imperdiet. Quisque odio tortor, pharetra in tincidunt vel, ultricies ut sem. Duis eget vulputate arcu, ut convallis magna. Proin vehicula nibh at nisl vestibulum, et placerat mi aliquet. Proin vitae ex sit amet ante aliquet sollicitudin.
+                  <br><br>Donec tellus erat, porta ornare mauris et, blandit luctus arcu. Aenean imperdiet massa tellus, vel sollicitudin ipsum finibus vitae. Vivamus maximus tellus sed fermentum ullamcorper. Duis porttitor varius sapien eget ornare. Nulla id metus sit amet tortor malesuada ultrices quis ut augue. Praesent ut consectetur risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fermentum hendrerit tincidunt. Nullam pellentesque sapien et libero maximus dapibus. Curabitur condimentum diam vitae interdum lobortis. Integer nec sagittis justo, eget porttitor massa. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla at quam eu nunc fringilla scelerisque. Vestibulum venenatis, erat non condimentum pretium, diam nulla placerat elit, vel eleifend eros leo id mauris.
+                  <br><br>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis ut turpis mauris. Duis luctus, lectus quis ultrices ultrices, leo sapien auctor ligula, in consectetur justo nisl id nulla. Nam velit ligula, pretium non lacinia id, molestie vel mi. Morbi sit amet ornare justo, id mollis diam. Donec interdum congue felis at vestibulum. Fusce eget metus id massa sollicitudin tincidunt id eget nunc. Sed id orci elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras tincidunt augue vitae posuere tristique. Integer neque est, aliquam et ultricies fermentum, interdum vel arcu. Sed hendrerit interdum pulvinar. Integer dui eros, congue quis posuere id, facilisis in est. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin gravida ultrices mattis.
+                </p>
+              </div>
+
+              <div id="entrepreneurship-reflection" class="tab-pane fade">
+                <br>
+                <p class="body-text">
+                  Entrepreneurship reflection
+                  <br>In google doc
+                  <br>Donec porttitor libero ac orci lacinia, sit amet hendrerit tortor eleifend. Suspendisse potenti. Phasellus venenatis ullamcorper pulvinar. Donec non ante at quam fringilla volutpat. Aenean tincidunt, lectus et ultricies tempor, mauris dolor semper enim, sit amet rhoncus nunc lorem laoreet velit. Vivamus eu libero pulvinar, lacinia dui elementum, iaculis nunc. Maecenas vel turpis ex.
+                  <br><br>Donec eros dui, volutpat vitae mollis ullamcorper, dapibus quis dolor. Aenean maximus urna nulla, eget viverra mi efficitur volutpat. Vestibulum enim justo, facilisis eu eros aliquam, vulputate tempus lectus. Curabitur in mattis odio, vitae mattis ligula. Nulla quis iaculis nibh. Duis bibendum, elit consequat porttitor blandit, lectus risus viverra nisl, et eleifend tellus arcu sit amet est. Curabitur feugiat posuere ornare. Sed laoreet nisi nibh, eget aliquam ex vestibulum quis. Phasellus ornare risus eget auctor imperdiet. Aliquam augue neque, lacinia in consectetur nec, tristique vitae ipsum. Quisque quis lectus vel neque aliquet facilisis. Aenean pulvinar posuere eros. Nullam quis viverra nulla, a facilisis turpis.
+                  <br><br>Etiam condimentum dolor eu elit eleifend pulvinar. Sed felis purus, convallis accumsan posuere ac, congue auctor nunc. Vivamus molestie odio at mauris convallis rhoncus. Fusce molestie orci id lacinia ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque semper sapien eget magna viverra scelerisque. Maecenas feugiat elementum urna et tincidunt. Ut nisl ante, elementum eget pulvinar vitae, consequat sollicitudin lectus. Quisque sed massa nibh. Morbi facilisis magna non mauris lobortis mollis consequat at ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam in tincidunt velit. Etiam vehicula risus ac ligula pellentesque, ut varius nibh posuere. Aenean suscipit massa sit amet metus commodo, eu finibus nibh condimentum. Donec vehicula maximus nibh, eget iaculis metus porttitor sit amet. Vivamus at tortor ex.
+                  <br><br>Etiam scelerisque nibh et suscipit molestie. Donec vitae ante sed odio ullamcorper tristique. Sed sit amet velit sit amet dolor faucibus porttitor non vitae neque. Donec tincidunt facilisis nibh id sagittis. Nam in risus vitae metus ornare imperdiet id eu magna. Sed tincidunt massa leo, in sagittis lacus gravida sed. Integer tincidunt iaculis volutpat. Integer convallis, nulla a eleifend dictum, lacus arcu ultricies neque, non ultrices risus enim nec mauris. Sed rutrum mattis ornare. Sed dictum risus quis nisl dignissim lacinia. Nullam faucibus eros et nisi sagittis, quis maximus ex mattis. Proin eu dolor eget lectus efficitur consectetur non nec mi.
+                  <br><br>Duis pellentesque felis viverra magna finibus tincidunt. Nulla id accumsan magna. Cras efficitur, magna quis ultricies pulvinar, diam ante vulputate massa, eget pretium orci massa in dolor. Aliquam placerat dui ac ex condimentum, a blandit tellus mollis. Pellentesque eleifend iaculis mauris, quis condimentum odio pharetra at. Aenean dapibus, quam cursus cursus sollicitudin, felis libero ultrices mauris, vitae sodales nunc lorem non enim. Mauris tristique elementum urna. In vulputate felis a lobortis volutpat. Ut imperdiet sapien in orci auctor cursus.
+                </p>
+              </div>
+
+              <div id="social-reflection" class="tab-pane fade">
+                <br>
+                <p class="body-text">
+                  Going to school for engineering, especially at an all-engineering university, can make it hard to feel connected to the rest of the world. Course content is often divorced from application and lacking a focus on people. I’ve gained valuable skills from school, but have felt they have been put to good use only when applied socially, rather than technically. Teaching as a volunteer at Excel was the first chance I got to do this. University serves to prepare you for a job, but with these kids, I finally wasn't just focusing on how I could make money or grow my own skills. And this reminded me of what the goal of engineering is in the first place — not to exist for its own sake or for the sake of its followers, but to improve people’s lives. Granted, I was teaching the students computer science as a potential career path in the same way Mines taught it to me, but promoting a career never felt like the goal. Instead, I just wanted the kids to better understand the technology-steeped world around them and have fun doing it. Engineerings usually improve quality of life by focusing on the health and convenience of consumers, but less often joy. This class was a refreshing chance to shift that for myself.
+                  <br><br>Teaching these kids didn’t change my life. It wasn’t the first or greatest experience I’ve have volunteering or giving back to the community. But it was one of the first things I did at Mines that felt connected to the real world. For example, we designed products and programs for the homeless in Nature and Human Values freshman year, but those projects never felt very impactful. They felt like we were looking through glass, deciding for ourselves what we saw and what needed to be done. Teaching at Excel was different. I don’t think I changed any lives, but the students had never had access to programming or robotics classes before, and they seemed to genuinely enjoy the opportunity.
+                </p>
+                <br><br>
+                <center>
+                  <span class="dot">
+                  </span>
+                  &nbsp;
+                  <span class="dot"></span>
+                  &nbsp;
+                  <span class="dot"></span>
+                </center>
+                <br>
+                <p class="body-text">
+                  Viasat
+                </p>
+              </div>
+              <div id="multicultural-reflection" class="tab-pane fade">
+                <br>
+                <p class="body-text">
+                  I have an overall positive experience/impression of social media. It improves my life in small, simple ways, and the few downsides are just first-world problems. But since its inception, social media has directly and indirectly contributed to increased bullying and suicide rates, large-scale misinformation, and in many places like Myanmar, hate crimes and genocide. Before my research for my paper, I was largely unaware of the extent of the damages digital connection can cause. My research also revealed that many of the problems social media can bring emerged long before it was widely used in Myanmar, showing that they are not unique to it. This further suggests a lack of foresight from Western companies and an inability to learn from experience in countries with well-established digital presence. I found this observation particularly applicable to myself as an engineer — it’s easy for me to assume technological innovations will “work” everywhere. It’s easy to view technology as a universal equalizer and as a constant force for good. It’s tempting to automatically throw tech at a problem without considering the possibility that it might actually work against your goals. But, one day in class, Professor Jesudason ended his lecture with a line that has stayed with me: “Equality in opportunity is not equality in outcome.” In this context, I understand this as saying that social, political, and cultural awareness cannot be an afterthought when solving Grand Challenges. Moreover, the successes and failures of previous and current implementations cannot be forgotten when expanding into new markets and countries.
+                </p>
+                <br><br>
+                <center>
+                  <span class="dot">
+                  </span>
+                  &nbsp;
+                  <span class="dot"></span>
+                  &nbsp;
+                  <span class="dot"></span>
+                </center>
+                <br>
+                <p class="body-text">
+                  Researching and writing the paper on Facebook in Myanmar taught me how tech and innovations can have unintended, unforeseen consequences when local/foreign cultures and sociopolitical climates are not well understood. I, along with my teammates, applied this understanding to Medblock — as we developed our solution, we acknowledged that the health care systems of the world vary wildly, but not always how we expect them to. China and the United States, for instance, actually have very similar methods for the electronic storage, access, and analysis of patient data, which our product could improve. But the distinct social and political forces driving those care systems mean that attempt to uniformly implement our product, not only would our proposal be more often rejected, it could end up failing the patients and providers we set out to help. 
+                  <br><br>It’s obvious to say that things don’t work the same way in other parts of the world as they do where I'm from. I hear it so often that it has almost become white noise. Paradoxically, I have noticed that this fact makes me consider its implications less. MedBlock reminded me that those differences should not just be taken as an implicit assumption at the start of projects, or something you know but never really think about, but as central of a focus as the goal and implementation of the product itself.
+                  <br><br>At the trade show following our presentation, my team and I talked to a mentor who pointed out our product's potential for helping immigrants, a demographic we hadn't specifically considered. Seeing as many of them are displaced, they don't have the same medical resources, situations, or concerns as do the majority of medical patients in the US. Prior to speaking with him, we had envisioned MedBlock as just working behind the scenes in hospitals to allow them to better manage and analyze patient information, but then realized that it can be used on a much more personal basis — directly by patients. Many people, not just immigrants, don't have all their medical information readily available. Many more don’t have insurance keeping their records or a standard personal identification method, but Blockchain technology could give them a way to carry this information and patient identification with them at all times. This conversation goes to show that not only do differences in cultures and demographics mean your product may slightly change region to region, they may reveal entirely new use cases.
+                </p>
+                <br>
+                <center>
+                  <span class="dot">
+                  </span>
+                  &nbsp;
+                  <span class="dot"></span>
+                  &nbsp;
+                  <span class="dot"></span>
+                </center>
+                <br>
+                <p class="body-text">
+                  Before I had any real experience with engineering and technology on a global scale, I remember thinking that they and the atmosphere surrounding them are a universal language where culture and politics had less influence. This lead me to believe that solutions that work in one country will, with few exceptions, work elsewhere. Politics needs engineering to shape public policy and help lawmakers make effective and informed decisions, but engineering needs an awareness and understanding of politics also, since solutions don't necessarily work across borders.
+                </p>
+              </div>
+              <div id="talent-reflection" class="tab-pane fade">
+                <br>
+                <p class="body-text">
+                  Talent reflection
+                  <br>In google doc
+                  <br>Praesent quis tellus elementum tellus pharetra aliquam sit amet vel dui. Vestibulum ac enim urna. Ut mattis commodo feugiat. Aenean varius mauris eu risus mollis, a feugiat metus ullamcorper. Ut lorem nisl, vehicula nec efficitur vitae, tincidunt quis mauris. Nulla placerat, ligula sed faucibus sodales, libero massa sollicitudin massa, ac rhoncus velit massa vitae tortor. Proin vitae pulvinar nibh, quis vestibulum felis. Quisque scelerisque ullamcorper pharetra. Nunc interdum magna massa. Sed mattis convallis felis, a egestas risus fermentum nec. Proin tristique felis nec justo consectetur lobortis. Vivamus eleifend dui commodo faucibus mattis. Nam risus dui, condimentum vitae augue eget, aliquet posuere orci. Nulla condimentum nunc eu ornare sagittis. In massa leo, eleifend ac diam sit amet, finibus lacinia arcu.
+                  <br><br>Aliquam dui nunc, semper nec maximus vel, consectetur eu lorem. Nullam ex felis, facilisis non dignissim vitae, tempus ac nibh. Nullam eget egestas velit. Donec luctus luctus leo vel bibendum. Vivamus interdum nisl ac quam maximus, non egestas lacus ullamcorper. Proin quis leo vulputate, sollicitudin dolor vel, consectetur orci. Nam nec aliquet enim. Duis sollicitudin cursus ligula, venenatis tincidunt orci dictum ac. Aenean varius ex id nulla congue, vitae aliquam lectus mollis. Fusce vel euismod nisi, non malesuada nunc. Ut pretium blandit lorem ac faucibus. Pellentesque tincidunt mi ac risus vulputate viverra. In eu lobortis turpis, non tempus felis. Cras porta tempus ante.
+                  <br><br>Duis sodales dignissim ante. Sed nec dui tincidunt, lacinia dui eu, sodales turpis. Nullam ornare nisi sit amet odio sagittis cursus. Fusce imperdiet lorem nec orci scelerisque, ullamcorper varius quam condimentum. Ut iaculis dui eros, vitae vehicula metus suscipit ac. Proin venenatis lobortis ante id molestie. Curabitur lobortis lacus quis risus sagittis, eget tempus tortor ultrices. Cras purus nulla, consectetur sit amet porttitor vel, accumsan elementum diam. In euismod neque at erat ultrices auctor. In blandit massa ipsum, tincidunt scelerisque diam rhoncus a. In sed consequat justo, eu pharetra dolor.
+                  <br><br>Phasellus et congue leo. Etiam quis magna vel nisl ultrices iaculis vel eu mauris. Nulla facilisi. Donec consequat, velit nec hendrerit hendrerit, odio sapien congue metus, sed pharetra risus est sit amet sapien. Duis feugiat eleifend faucibus. Maecenas feugiat ultricies posuere. Donec cursus aliquet volutpat. Fusce tincidunt tellus quis lectus consectetur lobortis. Ut ac consectetur leo. Duis luctus, massa id ornare bibendum, sapien lorem consequat augue, at dapibus orci tortor sed felis. Donec pretium ex vel purus consectetur, pulvinar ullamcorper massa tempor. Nunc a eros vel ante imperdiet mattis. Sed dolor ligula, finibus ac fermentum vitae, tincidunt vel orci. Donec commodo tellus mauris, vitae ullamcorper nunc placerat quis.
+                  <br><br>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam sed maximus magna. Nulla convallis fermentum augue vitae vehicula. Nullam vel euismod arcu. Proin ullamcorper magna sit amet urna hendrerit posuere. Pellentesque varius molestie tempor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam ultrices felis ut tellus tincidunt, eget euismod ligula dignissim. Pellentesque sem magna, viverra at elementum id, convallis vel nibh. Phasellus consequat ut massa id pulvinar. Nulla vel diam tincidunt, suscipit mi in, pharetra eros. Donec sed purus sit amet dolor hendrerit consequat. Cras sit amet mi vitae dolor placerat ornare in vitae nibh. Aliquam congue vehicula turpis, in interdum mi condimentum nec. Cras pellentesque ultrices augue in faucibus. Pellentesque congue magna venenatis mollis blandit.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div id="talent-competency" class="tab-pane fade">
-          <br>
-          <p class="body-text">
-            Talent Competency
-            <br>In google doc
-            <br>Praesent quis tellus elementum tellus pharetra aliquam sit amet vel dui. Vestibulum ac enim urna. Ut mattis commodo feugiat. Aenean varius mauris eu risus mollis, a feugiat metus ullamcorper. Ut lorem nisl, vehicula nec efficitur vitae, tincidunt quis mauris. Nulla placerat, ligula sed faucibus sodales, libero massa sollicitudin massa, ac rhoncus velit massa vitae tortor. Proin vitae pulvinar nibh, quis vestibulum felis. Quisque scelerisque ullamcorper pharetra. Nunc interdum magna massa. Sed mattis convallis felis, a egestas risus fermentum nec. Proin tristique felis nec justo consectetur lobortis. Vivamus eleifend dui commodo faucibus mattis. Nam risus dui, condimentum vitae augue eget, aliquet posuere orci. Nulla condimentum nunc eu ornare sagittis. In massa leo, eleifend ac diam sit amet, finibus lacinia arcu.
-            <br><br>Aliquam dui nunc, semper nec maximus vel, consectetur eu lorem. Nullam ex felis, facilisis non dignissim vitae, tempus ac nibh. Nullam eget egestas velit. Donec luctus luctus leo vel bibendum. Vivamus interdum nisl ac quam maximus, non egestas lacus ullamcorper. Proin quis leo vulputate, sollicitudin dolor vel, consectetur orci. Nam nec aliquet enim. Duis sollicitudin cursus ligula, venenatis tincidunt orci dictum ac. Aenean varius ex id nulla congue, vitae aliquam lectus mollis. Fusce vel euismod nisi, non malesuada nunc. Ut pretium blandit lorem ac faucibus. Pellentesque tincidunt mi ac risus vulputate viverra. In eu lobortis turpis, non tempus felis. Cras porta tempus ante.
-            <br><br>Duis sodales dignissim ante. Sed nec dui tincidunt, lacinia dui eu, sodales turpis. Nullam ornare nisi sit amet odio sagittis cursus. Fusce imperdiet lorem nec orci scelerisque, ullamcorper varius quam condimentum. Ut iaculis dui eros, vitae vehicula metus suscipit ac. Proin venenatis lobortis ante id molestie. Curabitur lobortis lacus quis risus sagittis, eget tempus tortor ultrices. Cras purus nulla, consectetur sit amet porttitor vel, accumsan elementum diam. In euismod neque at erat ultrices auctor. In blandit massa ipsum, tincidunt scelerisque diam rhoncus a. In sed consequat justo, eu pharetra dolor.
-            <br><br>Phasellus et congue leo. Etiam quis magna vel nisl ultrices iaculis vel eu mauris. Nulla facilisi. Donec consequat, velit nec hendrerit hendrerit, odio sapien congue metus, sed pharetra risus est sit amet sapien. Duis feugiat eleifend faucibus. Maecenas feugiat ultricies posuere. Donec cursus aliquet volutpat. Fusce tincidunt tellus quis lectus consectetur lobortis. Ut ac consectetur leo. Duis luctus, massa id ornare bibendum, sapien lorem consequat augue, at dapibus orci tortor sed felis. Donec pretium ex vel purus consectetur, pulvinar ullamcorper massa tempor. Nunc a eros vel ante imperdiet mattis. Sed dolor ligula, finibus ac fermentum vitae, tincidunt vel orci. Donec commodo tellus mauris, vitae ullamcorper nunc placerat quis.
-            <br><br>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam sed maximus magna. Nulla convallis fermentum augue vitae vehicula. Nullam vel euismod arcu. Proin ullamcorper magna sit amet urna hendrerit posuere. Pellentesque varius molestie tempor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam ultrices felis ut tellus tincidunt, eget euismod ligula dignissim. Pellentesque sem magna, viverra at elementum id, convallis vel nibh. Phasellus consequat ut massa id pulvinar. Nulla vel diam tincidunt, suscipit mi in, pharetra eros. Donec sed purus sit amet dolor hendrerit consequat. Cras sit amet mi vitae dolor placerat ornare in vitae nibh. Aliquam congue vehicula turpis, in interdum mi condimentum nec. Cras pellentesque ultrices augue in faucibus. Pellentesque congue magna venenatis mollis blandit.
-          </p>
+<!-- /reflection -->
+<!-- synthesis -->
+        <div id="synthesis-tab" class="tab-pane fade">
+          <br><br><br>
+          <div class="section" name="synthesis" id="synthesis">
+            <div class="row"  style="padding:13px 15px;">
+              <div class="pull-left">
+                  <img class="section-img" src="synthesis.png" alt="synthesis">
+              </div>
+              <div class="col-xs-8">
+                <p class="body-text">
+                  engineering is not what i thought it would be. It's better
+                  <br>In google doc
+                  <br>Sed efficitur ipsum quis quam scelerisque, bibendum sagittis erat ultrices. Proin luctus suscipit turpis eu molestie. Aenean vehicula diam libero. Maecenas porttitor porttitor nulla, in dictum nisi mattis vitae. Nam bibendum tincidunt lacus ut dapibus. Integer aliquet lorem sed massa tincidunt, sed imperdiet erat auctor. Mauris sollicitudin, sem quis venenatis pulvinar, quam est accumsan sem, ut efficitur odio tellus a velit. Donec rutrum lorem massa, sit amet condimentum est scelerisque a. Vestibulum semper quam vulputate, sodales sapien eget, ultrices est.
+                  <br><br>Sed nec mauris felis. Quisque vitae scelerisque erat, at bibendum turpis. Phasellus fringilla quam ac magna interdum sollicitudin. Maecenas interdum ex at malesuada pellentesque. Ut in ullamcorper quam. Donec id sem viverra, hendrerit est luctus, maximus ex. Suspendisse eget justo sed enim vulputate dapibus in vehicula mauris.
+                  <br><br>Ut sit amet dolor gravida, eleifend urna sed, porta risus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean sit amet nibh nec lorem dictum luctus in eu mauris. Duis blandit in lacus at dignissim. Aenean condimentum ipsum ut condimentum condimentum. Nulla lobortis ex nec orci pharetra, in convallis justo ultricies. Cras sagittis, ex ut fermentum porttitor, nisi enim ullamcorper libero, eget fringilla diam enim quis elit. Maecenas turpis augue, malesuada venenatis quam sed, lacinia porttitor sapien. Vestibulum id elit non sem porta dignissim at et eros. Cras laoreet nisi in felis ultricies, vitae dictum massa fermentum.
+                  <br><br>Maecenas lacinia, neque eget bibendum condimentum, sapien massa varius nisl, quis pretium dolor lacus vitae nulla. Phasellus hendrerit risus nec mi tincidunt, nec molestie odio pretium. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin semper massa et ante imperdiet, vestibulum semper ipsum lobortis. Duis a quam eu nibh vestibulum scelerisque. Aliquam nibh nibh, vestibulum nec ultricies in, condimentum at ex. Integer id velit volutpat, lobortis sem non, feugiat ex.
+                  <br><br>Morbi et lectus ultricies, mattis urna ac, porta tellus. Nunc volutpat nulla ac risus ultricies laoreet. Maecenas vel bibendum mauris, et interdum tortor. Praesent lacus enim, tincidunt eu vehicula dictum, sagittis eget neque. Nulla nec nulla ultrices, lacinia purus eget, auctor ipsum. Nullam lectus dui, rutrum vel consectetur eu, sodales non sapien. In pulvinar nunc nunc, sit amet tempus tortor vulputate efficitur. Integer suscipit lorem in maximus facilisis. Nunc elit tellus, viverra faucibus dui vitae, vestibulum suscipit ex. Proin ornare luctus enim at efficitur. Phasellus interdum commodo augue, scelerisque aliquet leo malesuada et. Donec at tincidunt lectus. Ut sodales scelerisque porttitor. Fusce venenatis urna at eros posuere lobortis. Maecenas sit amet massa enim.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
+<!-- end synthesis -->
+<!-- analysis -->
+        <div id="analysis-tab" class="tab-pane fade">
+          <br><br><br>
+          <div class="section" name="analysis" id="analysis">
+            <div class="row"  style="padding:13px 15px;">
+              <div class="pull-left">
+                  <img class="section-img" src="analysis.png" alt="analysis">
+              </div>
+              <div class="col-xs-8">
+                <p class="body-text">Do not consider equitable outcomes
+                  <br>In google doc
+                  <br>Sed ut magna elementum, iaculis sapien a, auctor dui. Phasellus tempus ultricies fermentum. Phasellus ultricies ligula a convallis euismod. Nulla lobortis, nisl non finibus congue, ligula turpis lacinia dui, at ultricies turpis massa sit amet ex. Phasellus gravida in ligula ut feugiat. Sed ut egestas libero, sed dictum ligula. Praesent luctus porttitor risus sit amet sollicitudin. Pellentesque pretium blandit lectus at ornare. In id tellus tristique arcu interdum viverra. Morbi metus urna, maximus vitae purus in, interdum mollis orci. Cras ipsum nisl, porttitor vel mi quis, iaculis sagittis diam.
+                  <br><br>In hac habitasse platea dictumst. Aenean non iaculis ex, ac malesuada nisi. Donec sagittis in tellus eget luctus. Sed sodales tincidunt purus, sit amet lacinia nisl tristique et. Integer in dignissim elit. Donec vestibulum suscipit nisi et euismod. In ac lacinia ligula. Donec facilisis urna nunc, ac vulputate diam venenatis vel. Suspendisse condimentum malesuada odio sed auctor. Donec non elementum nulla.
+                  <br><br>Mauris lacinia nisl eu purus cursus vestibulum. Aliquam erat volutpat. Sed eget odio nec dui tempus congue. Suspendisse id mauris tincidunt, ultricies purus sit amet, laoreet nulla. Suspendisse id mi ut nisi ullamcorper fringilla. Aenean cursus mauris id lorem tincidunt placerat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eu tellus sodales, commodo nisl et, cursus ligula. Donec maximus ex sed mauris eleifend, eget feugiat lorem faucibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. In finibus consectetur purus, a ornare dolor pretium nec. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi molestie massa suscipit ultrices mollis. Maecenas congue, arcu nec dignissim tincidunt, diam libero commodo elit, in consequat nunc ex a libero.
+                  <br><br>Pellentesque ac arcu vitae nisi dapibus eleifend. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur id dolor vitae est euismod dapibus. Etiam bibendum dignissim viverra. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque mollis mi et enim condimentum rutrum vel non orci. Sed quis maximus mi, eget molestie lacus.
+                  <br><br>Cras nec egestas dolor. Praesent ultrices eros nisl, sit amet vestibulum justo eleifend vel. Mauris placerat ante eu varius faucibus. Suspendisse tincidunt lacus purus, at malesuada dui cursus mattis. Quisque porttitor imperdiet metus vel mollis. Proin facilisis eleifend dolor non laoreet. Donec quis sagittis risus.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+<!-- end analysis -->
       </div>
     </div>
-    <!-- end competencies -->
-    <!-- synthesis -->
-    <br><br><br><br><br>
-    <div class="section" name="synthesis" id="synthesis">
-      <div class="row"  style="padding:13px 15px;">
-        <div class="pull-left">
-            <img class="section-img" src="synthesis.png" alt="synthesis">
-        </div>
-        <div class="col-xs-8">
-          <p class="body-text">
-            engineering is not what i thought it would be. It's better
-            <br>In google doc
-            <br>Sed efficitur ipsum quis quam scelerisque, bibendum sagittis erat ultrices. Proin luctus suscipit turpis eu molestie. Aenean vehicula diam libero. Maecenas porttitor porttitor nulla, in dictum nisi mattis vitae. Nam bibendum tincidunt lacus ut dapibus. Integer aliquet lorem sed massa tincidunt, sed imperdiet erat auctor. Mauris sollicitudin, sem quis venenatis pulvinar, quam est accumsan sem, ut efficitur odio tellus a velit. Donec rutrum lorem massa, sit amet condimentum est scelerisque a. Vestibulum semper quam vulputate, sodales sapien eget, ultrices est.
-            <br><br>Sed nec mauris felis. Quisque vitae scelerisque erat, at bibendum turpis. Phasellus fringilla quam ac magna interdum sollicitudin. Maecenas interdum ex at malesuada pellentesque. Ut in ullamcorper quam. Donec id sem viverra, hendrerit est luctus, maximus ex. Suspendisse eget justo sed enim vulputate dapibus in vehicula mauris.
-            <br><br>Ut sit amet dolor gravida, eleifend urna sed, porta risus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean sit amet nibh nec lorem dictum luctus in eu mauris. Duis blandit in lacus at dignissim. Aenean condimentum ipsum ut condimentum condimentum. Nulla lobortis ex nec orci pharetra, in convallis justo ultricies. Cras sagittis, ex ut fermentum porttitor, nisi enim ullamcorper libero, eget fringilla diam enim quis elit. Maecenas turpis augue, malesuada venenatis quam sed, lacinia porttitor sapien. Vestibulum id elit non sem porta dignissim at et eros. Cras laoreet nisi in felis ultricies, vitae dictum massa fermentum.
-            <br><br>Maecenas lacinia, neque eget bibendum condimentum, sapien massa varius nisl, quis pretium dolor lacus vitae nulla. Phasellus hendrerit risus nec mi tincidunt, nec molestie odio pretium. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin semper massa et ante imperdiet, vestibulum semper ipsum lobortis. Duis a quam eu nibh vestibulum scelerisque. Aliquam nibh nibh, vestibulum nec ultricies in, condimentum at ex. Integer id velit volutpat, lobortis sem non, feugiat ex.
-            <br><br>Morbi et lectus ultricies, mattis urna ac, porta tellus. Nunc volutpat nulla ac risus ultricies laoreet. Maecenas vel bibendum mauris, et interdum tortor. Praesent lacus enim, tincidunt eu vehicula dictum, sagittis eget neque. Nulla nec nulla ultrices, lacinia purus eget, auctor ipsum. Nullam lectus dui, rutrum vel consectetur eu, sodales non sapien. In pulvinar nunc nunc, sit amet tempus tortor vulputate efficitur. Integer suscipit lorem in maximus facilisis. Nunc elit tellus, viverra faucibus dui vitae, vestibulum suscipit ex. Proin ornare luctus enim at efficitur. Phasellus interdum commodo augue, scelerisque aliquet leo malesuada et. Donec at tincidunt lectus. Ut sodales scelerisque porttitor. Fusce venenatis urna at eros posuere lobortis. Maecenas sit amet massa enim.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!-- end synthesis -->
-    <!-- analysis -->
-    <br><br><br><br><br>
-    <div class="section" name="analysis" id="analysis">
-      <div class="row"  style="padding:13px 15px;">
-        <div class="pull-left">
-            <img class="section-img" src="analysis.png" alt="analysis">
-        </div>
-        <div class="col-xs-8">
-          <p class="body-text">Do not consider equitable outcomes
-            <br>In google doc
-            <br>Sed ut magna elementum, iaculis sapien a, auctor dui. Phasellus tempus ultricies fermentum. Phasellus ultricies ligula a convallis euismod. Nulla lobortis, nisl non finibus congue, ligula turpis lacinia dui, at ultricies turpis massa sit amet ex. Phasellus gravida in ligula ut feugiat. Sed ut egestas libero, sed dictum ligula. Praesent luctus porttitor risus sit amet sollicitudin. Pellentesque pretium blandit lectus at ornare. In id tellus tristique arcu interdum viverra. Morbi metus urna, maximus vitae purus in, interdum mollis orci. Cras ipsum nisl, porttitor vel mi quis, iaculis sagittis diam.
-            <br><br>In hac habitasse platea dictumst. Aenean non iaculis ex, ac malesuada nisi. Donec sagittis in tellus eget luctus. Sed sodales tincidunt purus, sit amet lacinia nisl tristique et. Integer in dignissim elit. Donec vestibulum suscipit nisi et euismod. In ac lacinia ligula. Donec facilisis urna nunc, ac vulputate diam venenatis vel. Suspendisse condimentum malesuada odio sed auctor. Donec non elementum nulla.
-            <br><br>Mauris lacinia nisl eu purus cursus vestibulum. Aliquam erat volutpat. Sed eget odio nec dui tempus congue. Suspendisse id mauris tincidunt, ultricies purus sit amet, laoreet nulla. Suspendisse id mi ut nisi ullamcorper fringilla. Aenean cursus mauris id lorem tincidunt placerat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eu tellus sodales, commodo nisl et, cursus ligula. Donec maximus ex sed mauris eleifend, eget feugiat lorem faucibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. In finibus consectetur purus, a ornare dolor pretium nec. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi molestie massa suscipit ultrices mollis. Maecenas congue, arcu nec dignissim tincidunt, diam libero commodo elit, in consequat nunc ex a libero.
-            <br><br>Pellentesque ac arcu vitae nisi dapibus eleifend. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur id dolor vitae est euismod dapibus. Etiam bibendum dignissim viverra. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque mollis mi et enim condimentum rutrum vel non orci. Sed quis maximus mi, eget molestie lacus.
-            <br><br>Cras nec egestas dolor. Praesent ultrices eros nisl, sit amet vestibulum justo eleifend vel. Mauris placerat ante eu varius faucibus. Suspendisse tincidunt lacus purus, at malesuada dui cursus mattis. Quisque porttitor imperdiet metus vel mollis. Proin facilisis eleifend dolor non laoreet. Donec quis sagittis risus.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!-- end analysis -->
-    <!-- footer -->
+  </div>
+<!-- footer -->
     <br><br><br><br><br><br>
     <div id="footer">
       <center>
-        <a href="https://www.nae.edu/" target="_blank"><img class="link-img" src="nae2.png" alt="nae"></a>
+        <a href="https://www.nae.edu/" target="_blank"><img class="link-img footer-img" src="nae2.png" alt="nae"></a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="https://grandchallenges.mines.edu/" target="_blank"><img class="link-img" src="mines2.png" alt="mines"></a>
+        <a href="https://grandchallenges.mines.edu/" target="_blank"><img class="link-img footer-img" src="mines2.png" alt="mines"></a>
       </center>
     </div>
-    <!-- end footer -->
+<!-- /footer -->
 </div>
 </body>
 </html>
