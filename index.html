@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Daniel Personius - GCSP Portfolio</title>
+  <title>GCSP Portfolio - Daniel Personius</title>
   <meta charset="utf-8">
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon//apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon//favicon-32x32.png">
@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css?family=Monoton|Montserrat|Open+Sans|Playfair+Display|Roboto+Mono|Roboto+Slab&display=swap" rel="stylesheet">
 
@@ -22,7 +21,6 @@
       $('.carousel').carousel({
         interval: 0
       })
-      // $('.carousel').carousel('pause');
 
        // resize image
       var topImageId = "top-img";
@@ -50,8 +48,6 @@
         $('#content-pills a[href="#' + tab + '-tab"]').click();
       });
 
-      // THIS IS FKN GARBAGE BUT I TRIED FOR HOURS AND NOTHING FKN WORKED. EVERY SO ANSWER FAILED
-      // EVERY PIECE OF DOC FAILED
       var mainLiIds = ['#introduction-tab-li', '#pillars-tab-li', '#reflection-tab-li', '#synthesis-tab-li', '#analysis-tab-li']
       var overviewLiIds = ['#egc-overview-li', '#multidisciplinary-overview-li', '#entrepreneurship-overview-li', '#social-overview-li', '#multicultural-overview-li', '#talent-overview-li'];
       var reflectionLiIds = ['#multidisciplinary-reflection-li', '#entrepreneurship-reflection-li', '#social-reflection-li', '#multicultural-reflection-li', '#talent-reflection-li'];
@@ -101,19 +97,9 @@
         });
       }
 
-      document.addEventListener("scroll", function() {
-        hideshow("section")
-        // var transition = 2000
-        // var jump_opacity = $('.jump').css("opacity")
-        // if (jump_opacity == 0 && $('#introduction').css("opacity") != 0) {
-        //   $(".jump").each(function(index) {
-        //     $(this).animate({'opacity':'1'}, transition);          
-        //   });
-        // }
-      });
+      // document.addEventListener("scroll", function() { hideshow("section")});
 
       // hacky way of waiting for animations to end
-
       setTimeout(function(){
         setTimeout(function(){
           setTimeout(function() {
@@ -159,6 +145,7 @@
   }
 
   .avatar {
+    width: 90%;
     border-radius: 50%;
   }
 
@@ -173,12 +160,7 @@
   #title-text {
     font-size: 3vmax;
     opacity: 0;
-    /*font-family: 'Roboto Slab', serif;*/
-    /*font-family: 'Roboto Mono', monospace;*/
-    /*font-family: 'Montserrat', sans-serif;*/
-    /*font-family: 'Monoton', cursive;*/
     font-family: 'Playfair Display', serif;
-    /*font-family: 'Open Sans', sans-serif;*/
   }
 
   #banner {
@@ -186,14 +168,9 @@
   }
 
   #subtitle {
-    font-size: 1vw;
+    font-size: 18px;
     opacity: 0;
-    /*font-family: 'Roboto Slab', serif;*/
-    /*font-family: 'Roboto Mono', monospace;*/
-    /*font-family: 'Montserrat', sans-serif;*/
-    /*font-family: 'Monoton', cursive;*/
     font-family: 'Playfair Display', serif;
-    /*font-family: 'Open Sans', sans-serif;*/
   }
 
   .full-width {
@@ -240,6 +217,7 @@
   }
 
   .footer-img {
+    width: 3%;
     opacity: 0;
   }
 
@@ -249,7 +227,7 @@
 
   .body-text {
     font-size: 23px;
-    /*font-size: 1.5vw;    */
+    /*font-size: 1.2vw;*/
   }
 
   .tab-text {
@@ -305,13 +283,11 @@
   }
 
   .caption-title {
-    font-size: 2.3vw;
-    /*font-size: 30px;*/
+    font-size: 30px;
   }
 
   .caption-text {
-    /*font-size: 15px;*/
-    font-size: 0.8vw;
+    font-size: 15px;
   }
 
   .centered-img {
@@ -334,8 +310,6 @@
   }
 
   .carousel {
-    /*width: 1200px;*/
-    /*width: auto;*/
     width: 75%;
     margin: 0 auto;
   }
@@ -368,7 +342,7 @@
     <img id="top-img" src="clouds2.jpg" alt="clouds" style="width:100%;">
     <div id="banner">
       <div class="centered-text">
-        <p id="title-text">Daniel Personius GCSP Portfolio</p>
+        <p id="title-text">GCSP Portfolio - Daniel Personius</p>
         <p class="links" id="subtitle">
           <button class="subtitle-button" id="introduction-link">Introduction</button>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -427,15 +401,14 @@
         <div id="introduction-tab" class="tab-pane fade in active">
           <div class="section" name="introduction" id="introduction">
             <br><br><br>
-            <!-- <div class="container"> -->
-              <div class="row"><!--   style="padding:13px 15px;"> -->
+              <div class="row">
                 <div class="col-xs-4 pull-left">
                     <img class="section-img avatar" src="images/me2.png" alt="me">
                 </div>
                 <div class="col-xs-8">
                   <p class="body-text">
-                    Hi, and welcome to my Grand Challenges Scholars Program portfolio! My name is Daniel Personius and I am a computer science undergraduate at the Colorado School of Mines in Golden, Colorado. I will be graduating this fall before moving to San Diego be a data scientist for the communications company Viasat. As my final semester comes to a close, I would like to reflect on my time at Mines and how this program has shaped it.
-                    <br><br>For readers who may not know, The GCSP is an outcomes-based at eighty-one schools across many countries. It aims to enhance engineering students’ social, political, economic, and social awareness and skills, preparing them to take on the National Academy of Engineering’s Grand Challenges of Engineering. These are fourteen large-scale issues facing the 21st century, spanning borders, professions, and cultures. Problems like preventing nuclear terror, ensuring access to clean water, reverse engineering the brain, and engineering the tools for scientific discovery. Problems that we as a global society need to address in order to maintain our health, joy, and sustainability as a species. At Mines, the scholars program has students complete five pillars to educate them in more than just math and science: Interdisciplinary Curriculum, a Global Dimension, Entrepreneurship, Service Learning, and Research or Project Experience.
+                    Hi, and welcome to my Grand Challenges Scholars Program portfolio! My name is Daniel Personius and I am a computer science undergraduate at the Colorado School of Mines in Golden, Colorado. I will be graduating this fall before moving to San Diego to be a data scientist for the communications company Viasat. As my final semester comes to a close, I would like to reflect on my time at Mines and how this program has shaped it.
+                    <br><br>For readers who may not know, The GCSP is an outcomes-based program at eighty-one schools across many countries. It aims to enhance engineering students’ social, political, economic, and cultural awareness and skills, preparing them to take on the National Academy of Engineering’s Grand Challenges of Engineering. These are fourteen large-scale issues facing the 21st century, spanning borders, professions, and cultures. Problems like preventing nuclear terror, ensuring access to clean water, reverse engineering the brain, and engineering the tools for scientific discovery. Problems that we as a global society need to address in order to maintain our health, joy, security, and sustainability as a species. At Mines, the Scholars Program has students complete five pillars to educate them in more than just math and science: Interdisciplinary Curriculum, a Global Dimension, Entrepreneurship, Service Learning, and Research or Project Experience.
                     <br><br>Throughout the program, I have had many amazing opportunities to gain knowledge and experience in these areas of expertise. Next is a brief summary of each activity, followed by reflections, a synthesis piece, and my feedback on the program as a whole.
 
                   </p>
@@ -544,8 +517,8 @@
                   <!-- /carousel -->
                   <br>
                   <p class="body-text">
-                    For my interdisciplinary experience, I completed two activities. My freshman year, I worked with a team of chemical and mechanical engineers on a term project for a Nature and Human Values course. This course combined design and philosophy to introduce students to the core ideas of human-centered engineering. Over the course of a semester, we studied the living situations of the homeless population in Denver, Colorado, then proposed a product to improve those conditions. The problem we saw as most pressing at the time was homeless individuals’ access to nutritional food, mostly due to the high prices in the city and overcrowded and underfunded shelters. To mitigate this, we designed a donation system for restaurants and other places of business to transfer uneaten or extra food into distributed vending machines to be bought by homeless and low-income individuals. 
-                    <br><br>Later on during my senior year, I entered a design competition with a team of fellow Scholars focused on the Grand Challenges. We had three months to design a product from scratch, create a company around it, and compete against teams from across the United States in Irvine, California. This winners of this stage moved on to pitch at the global student collaboration lab preceding the 2019 EGC Global Summit in London. We did not move onto this final round, but our company Canary has lived on. Canary a patent-pending design for integrating personal air pollution masks into everyday clothing. Traditional masks are often avoided due to inconvenience and negative stigma in many countries, so we made a way for the important part of the mask, the air filter, to fit into more comfortable and appealing clothing, like Buffs, scarves, and jackets. This project was a wonderful experience for me — I had the chance to work on a product not built with code, learn from my peers of metallurgical, mechanical, chemical, and electrical engineers, and apply knowledge and skills learned from my Entrepreneurship pillar.
+                    For my interdisciplinary experience, I completed two activities. My freshman year, I worked with a team of chemical and mechanical engineers on a term project for a Nature and Human Values(NHV) course. This course combined design and philosophy to introduce students to the core ideas of human-centered engineering. Over the course of a semester, we studied the living situations of the homeless population in Denver, Colorado, then proposed a product to improve those conditions. The problem we saw as most pressing at the time was homeless individuals’ access to nutritional food, mostly due to the high prices in the city and overcrowded, underfunded shelters. To mitigate this, we designed a donation system for restaurants and other places of business to transfer uneaten or extra food into distributed vending machines to be bought by homeless and low-income individuals. 
+                    <br><br>Later on in my junior year, I entered a design competition with a team of fellow Scholars focused on the Grand Challenges. We had three months to design a product from scratch, create a company around it, and compete against teams from across the United States in Irvine, California. This winners of this stage moved on to pitch at the Global Student Collaboration Lab preceding the 2019 Grand Challenges Global Summit in London. We didn't advance, but our company Canary has lived on. Canary is a design for integrating personal air pollution masks into everyday clothing. Traditional masks are often avoided due to inconvenience and negative stigma in many countries, so we made a way for the important part of the mask, the air filter, to fit into more comfortable and appealing clothing, like Buffs, scarves, and jackets. This project was a wonderful experience for me — I had the chance to work on a meaningful product, learn from my peers of metallurgical, mechanical, chemical, and electrical engineers, and apply knowledge and skills learned from my Entrepreneurship pillar.
                   </p>
                 </div>
 
@@ -577,7 +550,7 @@
                   <!-- /carousel -->
                   <br>
                   <p class="body-text">
-                    My Entrepreneurship competency was filled by co-founding a company my freshman year. Through a friend, I met a local business-owner who had an idea for a professional services startup and was in need of both a development team and people to run the business and refine his idea. For two and a half years, I worked to develop the technology for the company, as well as hire other developers, speak with legal consultants and potential investors, run beta tests with potential customers, write business plans and overview documents, as well as give market reports. I left the company while it was still in development due to school and work constraints, but in my time there, I gained a more clear understanding of how companies start and become successful, but more importantly, how and why they can fail.
+                    My Entrepreneurship competency was filled by co-founding a company my freshman year. Through a friend, I met a local business owner with an idea for a professional services startup and a need of both a software development team and people to market GavelGo — enabling small businesses to interact directly with potential customers through exlusive deals and auctions. For two and a half years, I worked to develop the technology for the company, as well as hire other developers, speak with legal consultants and potential investors, run beta tests with potential customers, write business plans and overview documents, and generate market reports. I left the company while it was still in development due to school and work constraints, but in my time with them, I gained a more clear understanding of how companies start and become successful, but more importantly, how and why they can fail.
                   </p>
                 </div>
 
@@ -624,7 +597,7 @@
                           <img src="images/devhack-model2.png" alt="devhack-model">
                           <div class="carousel-caption carousel-caption-light-image">
                             <h3 class="caption-title">Churn Prevention Model</h3>
-                            <p class="caption-text">...</p>
+                            <p class="caption-text">Maximizing customer retention by maximizing satisfaction</p>
                           </div>
                         </div>
 
@@ -651,7 +624,7 @@
                   <p class="body-text">
                     The Service Learning Pillar is an opportunity to address problems that impact people and their communities, preparing students to better handle the social dimensions inherent to Grand Challenges.
                     <br><br>As a sophomore, I volunteered at the Excel Academy in Arvada, Colorado teaching an after-school robotics and programming class to 7th and 8th graders. We met once a week for a semester, each time with a lesson on fundamental programming concepts and an open-ended circuit build.
-                    <br><br>I interned this summer as a software engineer for Viasat, a broadband communications company based in Carlsbad, California. At an internal hackathon, our team of software engineering, data analytics, marketing, and business interns developed a machine learning model to better predict customer churn and turnover, providing possible discounts and plan changes for customer care agents to suggest to dissatisfied customers.
+                    <br><br>I interned this summer as a software engineer for Viasat, a broadband communications company based in Carlsbad, California. At an internal hackathon, our team of software engineering, data analytics, marketing, and business interns developed a machine learning model to better predict customer churn and turnover, providing possible discounts and plan changes for customer care agents to suggest to dissatisfied customers. We did not win the main competition, but did win our category of “A new perspective on an old problem.”
 
                   </p>
                 </div>
@@ -676,7 +649,7 @@
                         <img src="images/paper2.png" alt="paper">
                         <div class="carousel-caption carousel-caption-light-image">
                           <h3 class="caption-title">Research Paper</h3>
-                          <p>A look at how ...</p>
+                          <p>A look at how social media can fule offline violence</p>
                         </div>
                       </div>
                       <div class="item">
@@ -708,23 +681,20 @@
                   <br>
                   <p class="body-text">
                     The Global pillar aims at bolstering the understanding of different cultures to ensure cultural acceptance of proposed engineering solutions. At Mines, I achieved this through both in-class and hands-on experiences.
-                    <br><br>My junior year, I enrolled in Asia: Politics and Society, a course at Mines taught by Professor James Jesudason. It highlighted the social, political, economic, and cultural environments of Eastern and Southeastern asian countries. As a final project, I wrote a research paper exploring how Myanmar’s Rohingya refugee crisis is influenced and fueled in part by social media platforms like Facebook and Twitter. Myanmar has been plagued for decades with violent conflict between their military and various ethnic and religious groups. Social media in no way induced the struggle, but in recent years, has been a powerful tool for the military to spread misinformation, cultivating a collective hatred for these minorities.
+                    <br><br>My junior year, I enrolled in Asia: Politics and Society, a course at Mines taught by Professor James Jesudason. It highlighted the social, political, economic, and cultural environments of Eastern and Southeastern asian countries. As a final project, I wrote a research paper exploring how Myanmar’s Rohingya refugee crisis is influenced and fueled in part by social media platforms like Facebook and Twitter. Myanmar has been plagued for decades with violent conflict between their military and various ethnic and religious groups. Social media in no way induced the struggle, but in recent years, has become a powerful tool for the military to spread misinformation, cultivating a collective hatred for these minorities.
                     <br><br>In the fall of 2019, my senior year, I attended the Global Grand Challenges Summit Student Collaboration Lab in London. There I competed in a one day design competition on a team of students from China, the U.K., and the U.S. We designed a data management system for the healthcare industry based on Blockchain technology and the Ethereum network.
-
                   </p>
                 </div>
                 <div id="talent-overview" class="tab-pane fade">
                   <br>
                     <!-- carousel -->
                     <div id="project-carousel" class="carousel slide carousel-fade" data-ride="carousel">
-                      <!-- Indicators -->
                       <ol class="carousel-indicators">
                         <li data-target="#project-carousel" data-slide-to="0" class="active"></li>
                         <li data-target="#project-carousel" data-slide-to="1"></li>
                         <li data-target="#project-carousel" data-slide-to="2"></li>
                         <li data-target="#project-carousel" data-slide-to="3"></li>
                       </ol>
-                      <!-- Wrapper for slides -->
                       <div class="carousel-inner">
                         <div class="item active">
                           <img src="images/lockheed2.png" alt="lockheed">
@@ -736,17 +706,13 @@
 
                         <div class="item">
                           <img src="images/lockheed-title-slide.png" alt="title slide">
-                          <div class="carousel-caption carousel-caption-light-image">
-                            <h3>text</h3>
-                            <p class="caption-text">text</p>
-                          </div>
                         </div>
 
                         <div class="item">
                           <img src="images/user2.png" alt="user">
                           <div class="carousel-caption carousel-caption-light-image">
-                            <h3>text text</h3>
-                            <p class="caption-text">text texttext texttext texttext text</p>
+                            <h3>The Landscape</h3>
+                            <p class="caption-text">How information is presented to the user</p>
                           </div>
                         </div>
 
@@ -754,11 +720,10 @@
                           <img src="images/vr.png" alt="vr">
                           <div class="carousel-caption carousel-caption-light-image">
                             <h3>Early Prototype</h3>
-                            <p class="caption-text">text texttext texttext texttext text</p>
+                            <p class="caption-text">of the ground view</p>
                           </div>
                         </div>
                       </div>
-                      <!-- Left and right controls -->
                       <a class="left carousel-control" href="#project-carousel" data-slide="prev">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                         <span class="sr-only">Previous</span>
@@ -772,9 +737,8 @@
                   <br>
                   <p class="body-text">
                     The project-based pillar is a chance for students to unify and apply the skills they have learned from the Scholar Program to a Grand Challenges-related problem.
-                    <br><br>During the fall of 2019, I have worked with a group of students from Mines to build a virtual reality application for Lockheed Martin. This application is for visualizing data from space object catalogs and alerting users to potential space events, like pending collisions. It consists of a global view, showing space objects and observation sites from an in-orbit perspective, a ground view that has the user look up from those observation sites, and various data-driven views for aggregating information regarding those objects, as well as monitoring events. In the future, the program will be expanded to allow the user to directly adjust orbits and send instructions to satellites.
-                    <br><br>Space object visualization and manipulation are related to the Grand Challenges in that applications such as our own contribute to the Challenge of Engineering the Tools for Scientific Discovery. Lockheed Martin was previously was using Tableau for visualization, a powerful visualization tool, but not well suited for satellite data. By giving the company and its clients more engaging and intuitive insight into their data, they can better understand and act on it, thus more efficiently and effectively utilizing their satellites for gathering data about and connecting the world.
-
+                    <br><br>In the fall of 2019, I worked with a group of students from Mines to build a virtual reality application for Lockheed Martin. This application is for visualizing data from space object catalogs and alerting users to potential space events, like pending collisions. It consists of a global view, showing space objects and observation sites from an in-orbit perspective, a ground view that has the user look up from those observation sites, and various data-driven views for aggregating information regarding those objects, as well as monitoring events. In the future, the program will be expanded to allow the user to directly adjust orbits and send instructions to satellites.
+                    <br><br>Space object visualization and manipulation are related to the Grand Challenges in that applications such as our own contribute to the Challenge of Engineering the Tools for Scientific Discovery. Lockheed Martin was previously using Tableau for visualization, a powerful visualization tool, but not well suited for satellite data. By giving the company and its clients more engaging and intuitive insight into their data, they can better understand and act on it, thus more efficiently and effectively utilizing their satellites for gathering data about and connecting the world.
                   </p>
                 </div>
               </div>
@@ -797,33 +761,36 @@
               <div id="multidisciplinary-reflection" class="tab-pane fade in active">
                 <br>
                 <p class="body-text">
-                  Multidisciplinary reflection
-                  <br>In google doc
-                  <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam lacinia ante, vitae commodo sem interdum sit amet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent a lorem eu ex accumsan varius sed non purus. Sed bibendum a sapien id tempor. Duis a fringilla mi. Praesent vitae felis orci. Suspendisse potenti. Nullam vitae diam sit amet nunc faucibus dictum nec volutpat tellus. Maecenas metus sem, congue eu posuere ut, dignissim a enim. Nulla et nibh quis mi efficitur consequat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                  <br><br>Integer ornare nisl vitae mattis vestibulum. Ut vel sapien arcu. In condimentum nisl ut interdum semper. Morbi gravida libero at consectetur dictum. Vivamus eu lacus at odio ultrices aliquet. Suspendisse potenti. Donec magna mi, elementum at ante vitae, consectetur imperdiet libero. Curabitur tempor tempus sapien ut consequat. Nullam non nisi convallis, cursus nulla id, egestas orci. Nulla hendrerit sed arcu id consequat. Vestibulum neque tellus, ultrices non scelerisque sed, gravida nec leo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi eu nibh consequat diam efficitur dapibus.
-                  <br><br>Praesent vehicula urna purus, a gravida turpis venenatis ut. Aliquam dictum iaculis nulla, vulputate porttitor nibh vehicula eget. Proin tincidunt ipsum id nisi vehicula, eget iaculis erat scelerisque. Maecenas diam massa, semper in purus id, pulvinar varius purus. Nunc nec lacus molestie, auctor tellus in, mollis sapien. Donec vulputate dictum diam a hendrerit. Cras vitae magna fermentum, laoreet tortor vel, suscipit felis. Fusce venenatis nec diam eu volutpat. Cras viverra vestibulum consequat. Suspendisse non ex scelerisque, ornare massa ut, gravida diam. Aliquam at tellus eu purus vulputate imperdiet. Quisque odio tortor, pharetra in tincidunt vel, ultricies ut sem. Duis eget vulputate arcu, ut convallis magna. Proin vehicula nibh at nisl vestibulum, et placerat mi aliquet. Proin vitae ex sit amet ante aliquet sollicitudin.
-                  <br><br>Donec tellus erat, porta ornare mauris et, blandit luctus arcu. Aenean imperdiet massa tellus, vel sollicitudin ipsum finibus vitae. Vivamus maximus tellus sed fermentum ullamcorper. Duis porttitor varius sapien eget ornare. Nulla id metus sit amet tortor malesuada ultrices quis ut augue. Praesent ut consectetur risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fermentum hendrerit tincidunt. Nullam pellentesque sapien et libero maximus dapibus. Curabitur condimentum diam vitae interdum lobortis. Integer nec sagittis justo, eget porttitor massa. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla at quam eu nunc fringilla scelerisque. Vestibulum venenatis, erat non condimentum pretium, diam nulla placerat elit, vel eleifend eros leo id mauris.
-                  <br><br>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis ut turpis mauris. Duis luctus, lectus quis ultrices ultrices, leo sapien auctor ligula, in consectetur justo nisl id nulla. Nam velit ligula, pretium non lacinia id, molestie vel mi. Morbi sit amet ornare justo, id mollis diam. Donec interdum congue felis at vestibulum. Fusce eget metus id massa sollicitudin tincidunt id eget nunc. Sed id orci elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras tincidunt augue vitae posuere tristique. Integer neque est, aliquam et ultricies fermentum, interdum vel arcu. Sed hendrerit interdum pulvinar. Integer dui eros, congue quis posuere id, facilisis in est. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin gravida ultrices mattis.
+                  Interdisciplinary work can be difficult. In my first year at Mines, I frankly had no idea of the mindset I needed to succeed at it. The team in NHV designed a product we thought would improve the lives of homeless people, but in the end, it just didn’t work that well. We picked a solution that didn’t play to any of our strengths, our ideas and opinions rarely meshed, and we hardly explored ideas that were outside of what we were already familiar with. I didn’t have a particularly positive experience, and for the most part, left it thinking that either our majors don’t collaborate well or that each major should just focus on what they know. Staying in our lanes weakened our product, but I took this to be a sign of incompatible expertise, not of a failure to find commonalities. It wasn’t until Canary two years later that I began to think differently.
+                </p>
+                <br><br>
+                <center>
+                  <span class="dot">
+                  </span>
+                  &nbsp;
+                  <span class="dot"></span>
+                  &nbsp;
+                  <span class="dot"></span>
+                </center>
+                <br><br>
+                <p class="body-text">
+                  Once we established the core of the product, we did move more to our own specialities. As the project progressed, I realized that I could contribute far more than just computer science. From my Entrepreneurship Pillar, I had business and marketing experience that directly applied to this project, as well. When I started focusing on what i could do outside of my major and learning from my teammates, I learned to not just throw technology at a problem and assume it will work. I came into the project with this assumption and it seems to be common among many engineers. My lane is not always the best way to approach a problem, and this isn’t a bad thing — working with others isn’t counterproductive or futile, but it can show you the errors or limitations of your own lane, augmenting it to be more useful. It can reveal ways to contribute to projects you didn’t think you could, making you an overall better engineer.
                 </p>
               </div>
 
               <div id="entrepreneurship-reflection" class="tab-pane fade">
                 <br>
                 <p class="body-text">
-                  Entrepreneurship reflection
-                  <br>In google doc
-                  <br>Donec porttitor libero ac orci lacinia, sit amet hendrerit tortor eleifend. Suspendisse potenti. Phasellus venenatis ullamcorper pulvinar. Donec non ante at quam fringilla volutpat. Aenean tincidunt, lectus et ultricies tempor, mauris dolor semper enim, sit amet rhoncus nunc lorem laoreet velit. Vivamus eu libero pulvinar, lacinia dui elementum, iaculis nunc. Maecenas vel turpis ex.
-                  <br><br>Donec eros dui, volutpat vitae mollis ullamcorper, dapibus quis dolor. Aenean maximus urna nulla, eget viverra mi efficitur volutpat. Vestibulum enim justo, facilisis eu eros aliquam, vulputate tempus lectus. Curabitur in mattis odio, vitae mattis ligula. Nulla quis iaculis nibh. Duis bibendum, elit consequat porttitor blandit, lectus risus viverra nisl, et eleifend tellus arcu sit amet est. Curabitur feugiat posuere ornare. Sed laoreet nisi nibh, eget aliquam ex vestibulum quis. Phasellus ornare risus eget auctor imperdiet. Aliquam augue neque, lacinia in consectetur nec, tristique vitae ipsum. Quisque quis lectus vel neque aliquet facilisis. Aenean pulvinar posuere eros. Nullam quis viverra nulla, a facilisis turpis.
-                  <br><br>Etiam condimentum dolor eu elit eleifend pulvinar. Sed felis purus, convallis accumsan posuere ac, congue auctor nunc. Vivamus molestie odio at mauris convallis rhoncus. Fusce molestie orci id lacinia ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque semper sapien eget magna viverra scelerisque. Maecenas feugiat elementum urna et tincidunt. Ut nisl ante, elementum eget pulvinar vitae, consequat sollicitudin lectus. Quisque sed massa nibh. Morbi facilisis magna non mauris lobortis mollis consequat at ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam in tincidunt velit. Etiam vehicula risus ac ligula pellentesque, ut varius nibh posuere. Aenean suscipit massa sit amet metus commodo, eu finibus nibh condimentum. Donec vehicula maximus nibh, eget iaculis metus porttitor sit amet. Vivamus at tortor ex.
-                  <br><br>Etiam scelerisque nibh et suscipit molestie. Donec vitae ante sed odio ullamcorper tristique. Sed sit amet velit sit amet dolor faucibus porttitor non vitae neque. Donec tincidunt facilisis nibh id sagittis. Nam in risus vitae metus ornare imperdiet id eu magna. Sed tincidunt massa leo, in sagittis lacus gravida sed. Integer tincidunt iaculis volutpat. Integer convallis, nulla a eleifend dictum, lacus arcu ultricies neque, non ultrices risus enim nec mauris. Sed rutrum mattis ornare. Sed dictum risus quis nisl dignissim lacinia. Nullam faucibus eros et nisi sagittis, quis maximus ex mattis. Proin eu dolor eget lectus efficitur consectetur non nec mi.
-                  <br><br>Duis pellentesque felis viverra magna finibus tincidunt. Nulla id accumsan magna. Cras efficitur, magna quis ultricies pulvinar, diam ante vulputate massa, eget pretium orci massa in dolor. Aliquam placerat dui ac ex condimentum, a blandit tellus mollis. Pellentesque eleifend iaculis mauris, quis condimentum odio pharetra at. Aenean dapibus, quam cursus cursus sollicitudin, felis libero ultrices mauris, vitae sodales nunc lorem non enim. Mauris tristique elementum urna. In vulputate felis a lobortis volutpat. Ut imperdiet sapien in orci auctor cursus.
+                  The Entrepreneurship Pillar is for learning ingenuity, teamwork, and communication in a venture setting. My time at Gavelgo absolutely bolstered these qualities for me, but more importantly, I gained valuable experience in marketing and customer discovery that I later applied to Canary in my Interdisciplinary Pillar. 
+                  <br><br>As a software developer, I was almost entirely focused on the product's technical aspects — how the databases were designed, what information to gather from users, what new features to implement, server infrastructure, and so on. I had to be to do my job well, but now, with space and time away from the project, I see that singular focus like this may not often work in a startup setting. It might in larger, more established companies, where employees can compartmentalize responsibilities, but not one with five employees at the time. Since I had to contribute to marketing as well, my technically-minded perspective damaged it — I tried to show people the product as I saw it, describing it terms of the mechanics of customer to business interactions and what gap we were filling in the market. What I didn't realize at the time was that advertising a good or service doesn't often talk about why that product is better than others or give a laundry list of its best qualities. Instead, advertising tries to sell buyers on an idea or a feeling, conflating a particular lifestyle or virtue with that product. A car isn't just fuel efficient and safe, the driver is shown to be adventurous, well-respected, and mysterious. A phone doesn't just have a long battery life, the user appears youthful and sociable. Most companies aren't addressing Grand Challenges, but the same lesson can be applied to those that are. Buyers aren't often swayed by straight facts and "reason" about a product, so selling something like a cheaper solar panel may not work well this way. It's reasonable to see that installing solar panels is good for the environment, but advertising a lifestyle of convenience and modernity may result in wider adoption. 
+                  <br><br>Ineffective advertising was not the last of Gavelgo's woes. Compounding the issue was insufficient customer discovery. I was again too concerned with developing the functional aspects of the technology, as well as delivering incremental releases to the rest of the team. I didn't focus on finding what <i>needed</i> to be created, and instead let the initial idea of what we <i>wanted</i> to make drive development. A number of businesses had expressed interest in the time I was with the company, but there seemed to be a disconnect between what the community could benefit the most from and what we offered them. Ultimately, we fell in love with the solution, not the problem.
                 </p>
               </div>
 
               <div id="social-reflection" class="tab-pane fade">
                 <br>
                 <p class="body-text">
-                  Going to school for engineering, especially at an all-engineering university, can make it hard to feel connected to the rest of the world. Course content is often divorced from application and lacking a focus on people. I’ve gained valuable skills from school, but have felt they have been put to good use only when applied socially, rather than technically. Teaching as a volunteer at Excel was the first chance I got to do this. University serves to prepare you for a job, but with these kids, I finally wasn't just focusing on how I could make money or grow my own skills. And this reminded me of what the goal of engineering is in the first place — not to exist for its own sake or for the sake of its followers, but to improve people’s lives. Granted, I was teaching the students computer science as a potential career path in the same way Mines taught it to me, but promoting a career never felt like the goal. Instead, I just wanted the kids to better understand the technology-steeped world around them and have fun doing it. Engineerings usually improve quality of life by focusing on the health and convenience of consumers, but less often joy. This class was a refreshing chance to shift that for myself.
+                  Going to school for engineering, especially at an all-engineering university, can make it hard to feel connected to the rest of the world. Course content is often divorced from application and lacking a focus on people. I’ve gained valuable skills from school, but have felt they have been put to good use only when applied socially, rather than technically. Teaching as a volunteer at Excel was the first chance I got to do this. University serves to prepare you for a job, but with these kids, I finally wasn't just focusing on how I could make money or grow my own skills. I was reminded what the goal of engineering is in the first place — not to exist for its own sake or for the sake of its followers, but to improve people’s lives. Granted, I was teaching the students computer science as a potential career path in the same way Mines taught it to me, but promoting a career never felt like the goal. Instead, I just wanted the kids to better understand the technology-steeped world around them and have fun doing it. Engineerings usually improve quality of life by focusing on the health and convenience of consumers, but less often joy. This class was a refreshing chance to shift that for myself.
                   <br><br>Teaching these kids didn’t change my life. It wasn’t the first or greatest experience I’ve have volunteering or giving back to the community. But it was one of the first things I did at Mines that felt connected to the real world. For example, we designed products and programs for the homeless in Nature and Human Values freshman year, but those projects never felt very impactful. They felt like we were looking through glass, deciding for ourselves what we saw and what needed to be done. Teaching at Excel was different. I don’t think I changed any lives, but the students had never had access to programming or robotics classes before, and they seemed to genuinely enjoy the opportunity.
                 </p>
                 <br><br>
@@ -835,30 +802,33 @@
                   &nbsp;
                   <span class="dot"></span>
                 </center>
-                <br>
+                <br><br>
                 <p class="body-text">
-                  Viasat
+                  My experience at the Viasat hackathon had a similar theme of joy — the team and I wanted to make customers more satisfied with the technology already available to them; we did not want to push new technology onto them. Supported by our cost-benefit analysis, we showed that the company did not always have to charge customers <i>more</i> to profit the most from them, but this was never the goal of the project. Internet service providers have notoriously poor ratings, at least in the United States, so we simply wanted to give customers a better experience. This made pitching our idea straightforward — more money and increased customer satisfaction is a no-brainer. Most judges were immediately on board, but it wasn’t easy convincing the rest of them. The company <i>would</i> lose money in the short term and cost benefit analyses can only be so indicative of reality. There is always a risk they are incomplete, unable to account for unforeseen factors, resulting in a net loss. I think what finally won them over was considering the fact that higher customer satisfaction would result in improved company image, which could in turn drive customer recruitment. Convincing them was a learning point for me — entering the Scholars Program, I figured that nearly everyone cares about these big problems and that financial bottom lines are less of a priority to executives and investors. But not everyone shares your values and practical things like money often get in the way, so you have to tailor your pitch to each crowd differently.
+                  <br><br>
+                  The hackathon was a reminder that, ideally, products should keep people above profits, but taken to an extreme, that can be challenging. Money deeply influences a product’s success, regardless of whether it’s satellite WiFi or something integral in solving the Grand Challenges. Engineering is then entrenched within the economic structures around it, even if those structures make it difficult to help people. So, maybe engineering needs a way to partially or completely divorce innovations from economics, perhaps in the form of drastically increased government funding. Engineers and scientists could then focus more on getting people what they need, even if customers couldn’t afford it otherwise. A good example is the Federal Communication Commission’s Connect America Fund initiative. Internet Service Providers and broadband companies, including Viasat, are given federal subsidies for increasing rural broadband access, a historically unprofitable endeavor. Providers would love to increase access in theory, but without the monetary supplement, find the effort less appealing. Increased funding could reduce the need to choose between revenue and altruism.
+                  <br><br>
                 </p>
               </div>
               <div id="multicultural-reflection" class="tab-pane fade">
                 <br>
                 <p class="body-text">
-                  I have an overall positive experience/impression of social media. It improves my life in small, simple ways, and the few downsides are just first-world problems. But since its inception, social media has directly and indirectly contributed to increased bullying and suicide rates, large-scale misinformation, and in many places like Myanmar, hate crimes and genocide. Before my research for my paper, I was largely unaware of the extent of the damages digital connection can cause. My research also revealed that many of the problems social media can bring emerged long before it was widely used in Myanmar, showing that they are not unique to it. This further suggests a lack of foresight from Western companies and an inability to learn from experience in countries with well-established digital presence. I found this observation particularly applicable to myself as an engineer — it’s easy for me to assume technological innovations will “work” everywhere. It’s easy to view technology as a universal equalizer and as a constant force for good. It’s tempting to automatically throw tech at a problem without considering the possibility that it might actually work against your goals. But, one day in class, Professor Jesudason ended his lecture with a line that has stayed with me: “Equality in opportunity is not equality in outcome.” In this context, I understand this as saying that social, political, and cultural awareness cannot be an afterthought when solving Grand Challenges. Moreover, the successes and failures of previous and current implementations cannot be forgotten when expanding into new markets and countries.
+                  I have an overall positive impression of social media. It improves my life in small, simple ways, with the few downsides being just first-world problems. But since its inception, social media has directly contributed to increased bullying and suicide rates, large-scale misinformation, and in many places like Myanmar, hate crimes and genocide. Before my research on it, I was largely unaware of the extent of the damages digital connection can cause. My research also revealed that many of the problems social media can bring emerged long before it was widely used in Myanmar. This suggests a lack of foresight from Western companies and an inability to learn from experience in countries with well-established digital presence. I found this observation particularly applicable to myself as an engineer — it’s easy for me to assume technological innovations will "work" everywhere. It’s easy to view technology as a universal equalizer and as a constant force for good. It’s tempting to automatically throw technology at a problem without considering the possibility that it might actually work against your goals. But, one day in class, Professor Jesudason ended his lecture with a line that has stayed with me: "Equality in opportunity is not equality in outcome." In this context, I understand this as saying that social, political, and cultural awareness cannot be an afterthought when solving Grand Challenges. Moreover, the successes and failures of previous and current implementations cannot be forgotten when expanding into new markets and countries.
                 </p>
+                <br>
+                <center>
+                  <span class="dot">
+                  </span>
+                  &nbsp;
+                  <span class="dot"></span>
+                  &nbsp;
+                  <span class="dot"></span>
+                </center>
                 <br><br>
-                <center>
-                  <span class="dot">
-                  </span>
-                  &nbsp;
-                  <span class="dot"></span>
-                  &nbsp;
-                  <span class="dot"></span>
-                </center>
-                <br>
                 <p class="body-text">
-                  Researching and writing the paper on Facebook in Myanmar taught me how tech and innovations can have unintended, unforeseen consequences when local/foreign cultures and sociopolitical climates are not well understood. I, along with my teammates, applied this understanding to Medblock — as we developed our solution, we acknowledged that the health care systems of the world vary wildly, but not always how we expect them to. China and the United States, for instance, actually have very similar methods for the electronic storage, access, and analysis of patient data, which our product could improve. But the distinct social and political forces driving those care systems mean that attempt to uniformly implement our product, not only would our proposal be more often rejected, it could end up failing the patients and providers we set out to help. 
-                  <br><br>It’s obvious to say that things don’t work the same way in other parts of the world as they do where I'm from. I hear it so often that it has almost become white noise. Paradoxically, I have noticed that this fact makes me consider its implications less. MedBlock reminded me that those differences should not just be taken as an implicit assumption at the start of projects, or something you know but never really think about, but as central of a focus as the goal and implementation of the product itself.
-                  <br><br>At the trade show following our presentation, my team and I talked to a mentor who pointed out our product's potential for helping immigrants, a demographic we hadn't specifically considered. Seeing as many of them are displaced, they don't have the same medical resources, situations, or concerns as do the majority of medical patients in the US. Prior to speaking with him, we had envisioned MedBlock as just working behind the scenes in hospitals to allow them to better manage and analyze patient information, but then realized that it can be used on a much more personal basis — directly by patients. Many people, not just immigrants, don't have all their medical information readily available. Many more don’t have insurance keeping their records or a standard personal identification method, but Blockchain technology could give them a way to carry this information and patient identification with them at all times. This conversation goes to show that not only do differences in cultures and demographics mean your product may slightly change region to region, they may reveal entirely new use cases.
+                  Researching and writing the paper on social media in Myanmar taught me how technology and innovations can have unintended, unforeseen consequences when local cultures and sociopolitical climates are not well understood. My Student Collaboration team applied this understanding to MedBlock — as we developed our solution, we acknowledged that the health care systems of the world vary wildly, but not always how we expect them to. China and the United States, for instance, have quite similar methods for the electronic storage, access, and analysis of patient data, which our product could improve. But the distinct social and political forces driving those care systems mean that if we attempted to uniformly implement our product, not only would our proposal be more often rejected, it could end up failing the patients and providers we set out to help. 
+                  <br><br>It’s obvious to say that things don’t work the same way in other parts of the world as they do where I'm from. I hear it so often that it has almost become white noise, and paradoxically, I consider its implications less. MedBlock reminded me that those differences should not just be taken as an implicit assumption at the start of projects, or something you know but never really think about, but as central of a focus as the goal and implementation of the product itself. 
+                  <br><br>At the trade show following our presentation, my team and I talked to a mentor who pointed out our product's potential for helping immigrants, a demographic we hadn't directly considered. Seeing as many of them are displaced, they don't have the same medical resources or concerns as do the majority of medical patients in the United States. Prior to speaking with him, we had envisioned MedBlock as just working behind the scenes in hospitals, allowing them to better manage and analyze patient information, but then realized that it can be used on a much more personal basis — directly by patients. Many people, not just immigrants, don't have all their medical information readily available. Many more don’t have insurance keeping their records or a standard personal identification method, but Blockchain technology could give them a way to carry this information and patient identification with them at all times. This conversation goes to show that not only do differences in cultures and demographics mean your product may slightly change region to region, but they may reveal entirely new use cases.
                 </p>
                 <br>
                 <center>
@@ -869,21 +839,16 @@
                   &nbsp;
                   <span class="dot"></span>
                 </center>
-                <br>
+                <br><br>
                 <p class="body-text">
-                  Before I had any real experience with engineering and technology on a global scale, I remember thinking that they and the atmosphere surrounding them are a universal language where culture and politics had less influence. This lead me to believe that solutions that work in one country will, with few exceptions, work elsewhere. Politics needs engineering to shape public policy and help lawmakers make effective and informed decisions, but engineering needs an awareness and understanding of politics also, since solutions don't necessarily work across borders.
+                  Before I had any real experience with engineering and technology on a global scale, I remember thinking that they and the atmosphere surrounding them are a universal language where culture and politics had less influence. This lead me to believe that solutions that work in one country will, with few exceptions, work elsewhere. Asia: Politics and Society and MedBlock revealed this is not the case. Politics needs engineering to shape public policy and help lawmakers make effective and informed decisions, but engineering needs an awareness and understanding of politics also, since solutions don't necessarily work across borders.
                 </p>
               </div>
               <div id="talent-reflection" class="tab-pane fade">
                 <br>
                 <p class="body-text">
-                  Talent reflection
-                  <br>In google doc
-                  <br>Praesent quis tellus elementum tellus pharetra aliquam sit amet vel dui. Vestibulum ac enim urna. Ut mattis commodo feugiat. Aenean varius mauris eu risus mollis, a feugiat metus ullamcorper. Ut lorem nisl, vehicula nec efficitur vitae, tincidunt quis mauris. Nulla placerat, ligula sed faucibus sodales, libero massa sollicitudin massa, ac rhoncus velit massa vitae tortor. Proin vitae pulvinar nibh, quis vestibulum felis. Quisque scelerisque ullamcorper pharetra. Nunc interdum magna massa. Sed mattis convallis felis, a egestas risus fermentum nec. Proin tristique felis nec justo consectetur lobortis. Vivamus eleifend dui commodo faucibus mattis. Nam risus dui, condimentum vitae augue eget, aliquet posuere orci. Nulla condimentum nunc eu ornare sagittis. In massa leo, eleifend ac diam sit amet, finibus lacinia arcu.
-                  <br><br>Aliquam dui nunc, semper nec maximus vel, consectetur eu lorem. Nullam ex felis, facilisis non dignissim vitae, tempus ac nibh. Nullam eget egestas velit. Donec luctus luctus leo vel bibendum. Vivamus interdum nisl ac quam maximus, non egestas lacus ullamcorper. Proin quis leo vulputate, sollicitudin dolor vel, consectetur orci. Nam nec aliquet enim. Duis sollicitudin cursus ligula, venenatis tincidunt orci dictum ac. Aenean varius ex id nulla congue, vitae aliquam lectus mollis. Fusce vel euismod nisi, non malesuada nunc. Ut pretium blandit lorem ac faucibus. Pellentesque tincidunt mi ac risus vulputate viverra. In eu lobortis turpis, non tempus felis. Cras porta tempus ante.
-                  <br><br>Duis sodales dignissim ante. Sed nec dui tincidunt, lacinia dui eu, sodales turpis. Nullam ornare nisi sit amet odio sagittis cursus. Fusce imperdiet lorem nec orci scelerisque, ullamcorper varius quam condimentum. Ut iaculis dui eros, vitae vehicula metus suscipit ac. Proin venenatis lobortis ante id molestie. Curabitur lobortis lacus quis risus sagittis, eget tempus tortor ultrices. Cras purus nulla, consectetur sit amet porttitor vel, accumsan elementum diam. In euismod neque at erat ultrices auctor. In blandit massa ipsum, tincidunt scelerisque diam rhoncus a. In sed consequat justo, eu pharetra dolor.
-                  <br><br>Phasellus et congue leo. Etiam quis magna vel nisl ultrices iaculis vel eu mauris. Nulla facilisi. Donec consequat, velit nec hendrerit hendrerit, odio sapien congue metus, sed pharetra risus est sit amet sapien. Duis feugiat eleifend faucibus. Maecenas feugiat ultricies posuere. Donec cursus aliquet volutpat. Fusce tincidunt tellus quis lectus consectetur lobortis. Ut ac consectetur leo. Duis luctus, massa id ornare bibendum, sapien lorem consequat augue, at dapibus orci tortor sed felis. Donec pretium ex vel purus consectetur, pulvinar ullamcorper massa tempor. Nunc a eros vel ante imperdiet mattis. Sed dolor ligula, finibus ac fermentum vitae, tincidunt vel orci. Donec commodo tellus mauris, vitae ullamcorper nunc placerat quis.
-                  <br><br>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam sed maximus magna. Nulla convallis fermentum augue vitae vehicula. Nullam vel euismod arcu. Proin ullamcorper magna sit amet urna hendrerit posuere. Pellentesque varius molestie tempor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam ultrices felis ut tellus tincidunt, eget euismod ligula dignissim. Pellentesque sem magna, viverra at elementum id, convallis vel nibh. Phasellus consequat ut massa id pulvinar. Nulla vel diam tincidunt, suscipit mi in, pharetra eros. Donec sed purus sit amet dolor hendrerit consequat. Cras sit amet mi vitae dolor placerat ornare in vitae nibh. Aliquam congue vehicula turpis, in interdum mi condimentum nec. Cras pellentesque ultrices augue in faucibus. Pellentesque congue magna venenatis mollis blandit.
+                  This project was for my computer science “Field Session”, Mines’ way of having students culminate their undergraduate knowledge by working for real-world clients. Many types of companies participate, each offering a slightly different perspective on industry, and students choose what most interests them. Lockheed’s proposal was particularly exciting to me as an aspiring data scientist, since most other offerings focused on building something from scratch with new data, or on making certain life tasks easier. This application was different in that Lockheed was already visualizing satellites — they already had the data and a method for doing it. Tableau was working well enough, but they knew it wasn’t using their data to its full potential. They knew that visualization could be better — more customizable, immersive, and interactive. I was so excited because the project wasn’t about gathering new data or making tools to better gather that data, but about improving people's ability to interpret, understand, and apply the data we already have. It was a chance to step into an existing problem space, carefully examine how current solutions were lacking, and find what would actually fix the problem. If we hadn’t, we would not have left the realm of 2D and fragmented Lockheed’s technical environment with just another visualization tool that didn’t solve the core issue. This process helped me realize that engineering challenges don't always need more data to be solved, but instead, engineers need ways to better understand what they already have. We can have all the data in the world, but it's useless if we can’t look at it in the right way. In some cases, it could even be harmful if we misunderstand what it’s trying to tell us.
+                  <br><br>Satellites are powerful tools for scientific discovery. As their numbers rise, the amount of data they collect grows rapidly. If space traffic controllers can better understand how their satellites are behaving and have better control over how they operate, they can make more informed decisions about how to modify their behavior. Those satellites can then in turn better serve our global data needs. This application obviously doesn't singlehandedly revolutionize satellite operations, but I feel that improving this data understanding step plays a part in removing the busywork of manually interpreting operational data so that scientists and engineers can instead focus on discovering new insights.
                 </p>
               </div>
             </div>
@@ -893,48 +858,39 @@
 <!-- synthesis -->
         <div id="synthesis-tab" class="tab-pane fade">
           <br><br><br>
-          <div class="section" name="synthesis" id="synthesis">
-            <div class="row"  style="padding:13px 15px;">
-              <div class="pull-left">
-                  <img class="section-img" src="synthesis.png" alt="synthesis">
-              </div>
-              <div class="col-xs-8">
-                <p class="body-text">
-                  engineering is not what i thought it would be. It's better
-                  <br>In google doc
-                  <br>Sed efficitur ipsum quis quam scelerisque, bibendum sagittis erat ultrices. Proin luctus suscipit turpis eu molestie. Aenean vehicula diam libero. Maecenas porttitor porttitor nulla, in dictum nisi mattis vitae. Nam bibendum tincidunt lacus ut dapibus. Integer aliquet lorem sed massa tincidunt, sed imperdiet erat auctor. Mauris sollicitudin, sem quis venenatis pulvinar, quam est accumsan sem, ut efficitur odio tellus a velit. Donec rutrum lorem massa, sit amet condimentum est scelerisque a. Vestibulum semper quam vulputate, sodales sapien eget, ultrices est.
-                  <br><br>Sed nec mauris felis. Quisque vitae scelerisque erat, at bibendum turpis. Phasellus fringilla quam ac magna interdum sollicitudin. Maecenas interdum ex at malesuada pellentesque. Ut in ullamcorper quam. Donec id sem viverra, hendrerit est luctus, maximus ex. Suspendisse eget justo sed enim vulputate dapibus in vehicula mauris.
-                  <br><br>Ut sit amet dolor gravida, eleifend urna sed, porta risus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean sit amet nibh nec lorem dictum luctus in eu mauris. Duis blandit in lacus at dignissim. Aenean condimentum ipsum ut condimentum condimentum. Nulla lobortis ex nec orci pharetra, in convallis justo ultricies. Cras sagittis, ex ut fermentum porttitor, nisi enim ullamcorper libero, eget fringilla diam enim quis elit. Maecenas turpis augue, malesuada venenatis quam sed, lacinia porttitor sapien. Vestibulum id elit non sem porta dignissim at et eros. Cras laoreet nisi in felis ultricies, vitae dictum massa fermentum.
-                  <br><br>Maecenas lacinia, neque eget bibendum condimentum, sapien massa varius nisl, quis pretium dolor lacus vitae nulla. Phasellus hendrerit risus nec mi tincidunt, nec molestie odio pretium. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin semper massa et ante imperdiet, vestibulum semper ipsum lobortis. Duis a quam eu nibh vestibulum scelerisque. Aliquam nibh nibh, vestibulum nec ultricies in, condimentum at ex. Integer id velit volutpat, lobortis sem non, feugiat ex.
-                  <br><br>Morbi et lectus ultricies, mattis urna ac, porta tellus. Nunc volutpat nulla ac risus ultricies laoreet. Maecenas vel bibendum mauris, et interdum tortor. Praesent lacus enim, tincidunt eu vehicula dictum, sagittis eget neque. Nulla nec nulla ultrices, lacinia purus eget, auctor ipsum. Nullam lectus dui, rutrum vel consectetur eu, sodales non sapien. In pulvinar nunc nunc, sit amet tempus tortor vulputate efficitur. Integer suscipit lorem in maximus facilisis. Nunc elit tellus, viverra faucibus dui vitae, vestibulum suscipit ex. Proin ornare luctus enim at efficitur. Phasellus interdum commodo augue, scelerisque aliquet leo malesuada et. Donec at tincidunt lectus. Ut sodales scelerisque porttitor. Fusce venenatis urna at eros posuere lobortis. Maecenas sit amet massa enim.
-                </p>
-              </div>
-            </div>
-          </div>
+          <p class="body-text">
+            Engineering is not what I thought it would be. I came to Mines for computer science simply because I enjoyed writing software and didn't know much about engineering beyond that. From what little I did know, my perception was it is largely concerned with building new machines and structures for the purpose of industry. This is not entirely wrong, and my classes at mines showed me other types that exist, but I was wrong about the purpose. Whether it tries to or not, Mines as a university inherently teaches engineering as a means of getting a job and making money. Again, this is not wrong or immoral, but it does not stress the social aspect of engineering and how it is not just in service of industry. It fails to show engineering’s potential for building a more sustainable society, increasing health and joy, or altruism. It wasn’t until I joined the Scholars Program that I began to understand that potential through the lens of the large-scale problems the world is facing. 
+            <br><br>When I joined the program, I didn’t really know what to expect. I assumed it focuses on further explaining the Grand Challenges themselves — why they arose, what the technical problems are, and what the solutions should look like. So I was pleasantly surprised when it was more open-ended, working to develop necessary soft skills. This is directly antithetical to another theme I have observed at Mines: there is one correct solution and if you do the math and build the right system, you’ll find it. What helped me begin to unlearn this mentality was a common thread among many of my pillars — technical solutions are not always the answer, and throwing technology at a problem is not always effective. For Canary, this meant that reinventing the pollution mask wouldn’t differentiate our product or convince more people to use a mask, but leveraging what already exists could. For Gavelgo, it was starting with strong customer discovery instead of charging forward building what we initially wanted to build. For MedBlock, building something that could adapt to diverse political and cultural environments, instead one a single, monolithic system. For Lockheed, building something that actually addressed the issues with current visualizations and that didn’t unintentionally exacerbate those issues.
+            <br><br>
+            Looking into the future, my next job does not address any Grand Challenges, but I would love to continue contributing to their solutions. What I find most interesting is the Challenge of reverse engineering the brain, as it intersects engineering, computer science, and another love of mine, neuroscience. I also have a more personal connection to this Challenge, as Alzheimer’s and other types of dementia run in my family. Data science and machine learning are typically associated with enhancing business insight and building artificial intelligence to improve customer experience, not so much for understanding the biological brain and preventing the issues that arise with it. This would also fit into my desire to further explore the role of computer science in the Grand Challenges and engineering as a whole. There are Challenges geared toward it, like securing cyberspace, but I spent most of the program developing other skills, often feeling I was acting as a computer scientist second. I would love to better understand how computer science can impact all of engineering, perhaps by looking at how engineers and scientists can take more data-driven approaches to their work.
+          </p>
+          <br>
+          <center>
+            <span class="dot">
+            </span>
+            &nbsp;
+            <span class="dot"></span>
+            &nbsp;
+            <span class="dot"></span>
+          </center>
+          <br><br>
+          <p class="body-text">
+            When I started school, I had no idea what I wanted to do. I had no idea what engineering is fully capable of. I had no idea how entrenched in social systems engineering is, or how and why that can be a good thing. As stressful and time-consuming as it was, I’m glad that I came to Mines. It opened up new possibilities for my future and gave me a glimpse of the tremendous amount of good science and technology can do. Engineering is not what I thought it would be. It’s so much better. 
+          </p>
         </div>
-<!-- end synthesis -->
+<!-- /synthesis -->
 <!-- analysis -->
         <div id="analysis-tab" class="tab-pane fade">
           <br><br><br>
-          <div class="section" name="analysis" id="analysis">
-            <div class="row"  style="padding:13px 15px;">
-              <div class="pull-left">
-                  <img class="section-img" src="analysis.png" alt="analysis">
-              </div>
-              <div class="col-xs-8">
-                <p class="body-text">Do not consider equitable outcomes
-                  <br>In google doc
-                  <br>Sed ut magna elementum, iaculis sapien a, auctor dui. Phasellus tempus ultricies fermentum. Phasellus ultricies ligula a convallis euismod. Nulla lobortis, nisl non finibus congue, ligula turpis lacinia dui, at ultricies turpis massa sit amet ex. Phasellus gravida in ligula ut feugiat. Sed ut egestas libero, sed dictum ligula. Praesent luctus porttitor risus sit amet sollicitudin. Pellentesque pretium blandit lectus at ornare. In id tellus tristique arcu interdum viverra. Morbi metus urna, maximus vitae purus in, interdum mollis orci. Cras ipsum nisl, porttitor vel mi quis, iaculis sagittis diam.
-                  <br><br>In hac habitasse platea dictumst. Aenean non iaculis ex, ac malesuada nisi. Donec sagittis in tellus eget luctus. Sed sodales tincidunt purus, sit amet lacinia nisl tristique et. Integer in dignissim elit. Donec vestibulum suscipit nisi et euismod. In ac lacinia ligula. Donec facilisis urna nunc, ac vulputate diam venenatis vel. Suspendisse condimentum malesuada odio sed auctor. Donec non elementum nulla.
-                  <br><br>Mauris lacinia nisl eu purus cursus vestibulum. Aliquam erat volutpat. Sed eget odio nec dui tempus congue. Suspendisse id mauris tincidunt, ultricies purus sit amet, laoreet nulla. Suspendisse id mi ut nisi ullamcorper fringilla. Aenean cursus mauris id lorem tincidunt placerat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eu tellus sodales, commodo nisl et, cursus ligula. Donec maximus ex sed mauris eleifend, eget feugiat lorem faucibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. In finibus consectetur purus, a ornare dolor pretium nec. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi molestie massa suscipit ultrices mollis. Maecenas congue, arcu nec dignissim tincidunt, diam libero commodo elit, in consequat nunc ex a libero.
-                  <br><br>Pellentesque ac arcu vitae nisi dapibus eleifend. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur id dolor vitae est euismod dapibus. Etiam bibendum dignissim viverra. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque mollis mi et enim condimentum rutrum vel non orci. Sed quis maximus mi, eget molestie lacus.
-                  <br><br>Cras nec egestas dolor. Praesent ultrices eros nisl, sit amet vestibulum justo eleifend vel. Mauris placerat ante eu varius faucibus. Suspendisse tincidunt lacus purus, at malesuada dui cursus mattis. Quisque porttitor imperdiet metus vel mollis. Proin facilisis eleifend dolor non laoreet. Donec quis sagittis risus.
-                </p>
-              </div>
-            </div>
-          </div>
+          <p class="body-text">
+            I want to preface this section by reiterating how much I appreciate the Scholars Program augmenting my education at Mines and helping me grow as an engineer. Mines can be an extremely stressful, rigid, and pedantic. As much as I knew what engineering can be and can be used for, the coursework often felt divorced from the Mines ethos of “Earth, Energy, and Environment”. While it was hard to keep in mind all the good engineering can do, this program was a constant reminder of why I was there. That being said, I think it could be more involved in guiding students through their activities. The program tells students to complete certain types of activities that will teach them about teamwork, innovation, and multiculturalism, then has them reflect on what they have learned in a portfolio. If students have not had much prior exposure to a particular pillar, they may be going in blind, not knowing exactly what sort of experience they should be gaining or what skills they should be developing. This hands-off approach is good to a large extent, since it highlights the open-endedness and "no one right answer" mentality of the Grand Challenges, but I think that students could benefit from being pointed in the right direction. They shouldn’t be told what to think or exactly what they should learn, but they could be shown what to aim at and what to look out for during the activities. Often students, like me, complete a number of pillars before even joining the program, so prior guidance will not always be possible, but it may help otherwise.
+            <br><br>
+            At the same time, the Scholars Program at Mines fixes the reservations I have with the Grand Challenges themselves. The program stresses the social political and cultural aspects of challenges, like access to clean water, but the report barely does at all. It passingly mentions "[integrating] methods and solutions with the goals and desires of all society’s members", but then frames each Challenge almost entirely in terms of technical problem solving. The engineers and scientists that wrote the report understandably expressed the Challenges in terms of their expertise. They are the "Engineering" Grand Challenges, after all. But in framing them that way, what is not shown is the understanding that these problems are not just for engineering, downplaying the professed need for social, political, economic, and cultural understanding and competence. The result is that many of the Challenges are expressed as particular solutions, not the core issues those technologies address. Take the call to “Make Solar Power Economical”, for example. The reader can infer that this means the core problem is combating climate change and avoiding its adverse effects, but it immediately rules out all other options for clean renewable energy. The Challenges should state what the problem is, not what the solution should be. Then they would properly acknowledge that the Challenges are part of larger societal concerns outside of engineering, and that if engineers should be taking a truly interdisciplinary approach to solving them, we should be only one party in a vast effort to addressing not the <i>Engineering</i> Grand Challenges, but the <i>Global</i> Grand Challenges.
+            <br><br>
+            As stated elsewhere, what is absent from the discussion of the Challenges is acknowledgement of what caused them in the first place. I would like to add that they also do not acknowledge the fact that fallout from these problems disproportionately harms smaller, more developing countries. Countries that didn’t get us in this situation in the first place and contribute far less to it worsening. For example, the richest twenty percent of the global population accounts for roughly eighty percent of emissions, but it’s the poorest countries that bear the brunt of the damages. Technical solutions themselves cannot account for this disparity. The Challenges will never be overcome if equity is not a priority.
+          </p>
         </div>
-<!-- end analysis -->
+<!-- /analysis -->
       </div>
     </div>
   </div>
